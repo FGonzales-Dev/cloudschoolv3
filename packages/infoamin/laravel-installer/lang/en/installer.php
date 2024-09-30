@@ -11,7 +11,7 @@ return [
         'name' => 'Artifism',
         'version' => 'V 1.0',
         'title' => 'Welcome to the Installer !',
-        'message' => 'Easy installation and setup wizard',
+        'message' => 'Easy installation and setup wizard -- testing push from git',
         'requirementcheckingbutton' => 'Start with checking requirements',
         'serverrequirements' => 'Server Requirements',
         'back_button' => 'Back',
