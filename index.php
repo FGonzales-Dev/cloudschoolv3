@@ -19,6 +19,8 @@ define('LARAVEL_START', microtime(true));
 | into the script here so that we don't have to worry about manual
 | loading any of our classes later on. It feels great to relax.
 |
+
+this is just a test
 */
 
 require __DIR__.'/vendor/autoload.php';
