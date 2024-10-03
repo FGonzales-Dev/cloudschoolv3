@@ -19,14 +19,14 @@
             <button id="menuBtn" class="block md:hidden focus:outline-none neg-transition-scale" type="button" onclick="navToggle();">
                 <svg id="icon" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26"
                     fill="none">
-                    <path d="M22 13H4M22 7H4M22 19H10" stroke="white" stroke-width="2" stroke-linecap="round"
+                    <path d="M22 13H4M22 7H4M22 19H10" stroke="black" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" />
                 </svg>
                 <svg id="cross_icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="26" height="26"
                     viewBox="0 0 26 26" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd"
                         d="M5.36612 6.36612C5.85427 5.87796 6.64573 5.87796 7.13388 6.36612L12.5 11.7322L17.8661 6.36612C18.3543 5.87796 19.1457 5.87796 19.6339 6.36612C20.122 6.85427 20.122 7.64573 19.6339 8.13388L14.2678 13.5L19.6339 18.8661C20.122 19.3543 20.122 20.1457 19.6339 20.6339C19.1457 21.122 18.3543 21.122 17.8661 20.6339L12.5 15.2678L7.13388 20.6339C6.64573 21.122 5.85427 21.122 5.36612 20.6339C4.87796 20.1457 4.87796 19.3543 5.36612 18.8661L10.7322 13.5L5.36612 8.13388C4.87796 7.64573 4.87796 6.85427 5.36612 6.36612Z"
-                        fill="white" />
+                        fill="black" />
                 </svg>
             </button>
         </div>
@@ -95,9 +95,10 @@
                             <a class="text-white text-16 cursor-pointer font-normal language-dropdown-click font-Figtree flex text-center gap-2 items-center justify-center">
                                 <img class="rounded-full cursor-pointer h-[18px] w-[18px] bg-white neg-transition-scale" src="{{ url("public/datta-able/fonts/flag/flags/4x3/" . getSVGFlag($flag) . ".svg") }}"
                                 alt="{{ __('Image') }}">
-                                <p> {{ ucFirst($flag) }} </p>
+                            
+                                <p style="color: black;"> {{ ucFirst($flag) }} </p>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="13" viewBox="0 0 12 13" fill="none">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2.64645 4.64605C2.45118 4.84131 2.45118 5.15789 2.64645 5.35316L5.64645 8.35316C5.84171 8.54842 6.15829 8.54842 6.35355 8.35316L9.35355 5.35316C9.54882 5.15789 9.54882 4.84131 9.35355 4.64605C9.15829 4.45079 8.84171 4.45079 8.64645 4.64605L6 7.2925L3.35355 4.64605C3.15829 4.45079 2.84171 4.45079 2.64645 4.64605Z" fill="white"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2.64645 4.64605C2.45118 4.84131 2.45118 5.15789 2.64645 5.35316L5.64645 8.35316C5.84171 8.54842 6.15829 8.54842 6.35355 8.35316L9.35355 5.35316C9.54882 5.15789 9.54882 4.84131 9.35355 4.64605C9.15829 4.45079 8.84171 4.45079 8.64645 4.64605L6 7.2925L3.35355 4.64605C3.15829 4.45079 2.84171 4.45079 2.64645 4.64605Z" fill="black"/>
                                 </svg>
                             </a>
                             <div
@@ -107,7 +108,7 @@
                                         <a data-short-name="{{ $language->short_name }}" class="lang-change flex justify-start items-center gap-1.5 text-14 font-medium text-color-14 dark:text-white font-Figtree px-[15px] py-2 hover:bg-color-F6 dark:hover:bg-[#3A3A39]">
                                             <img class="rounded-full cursor-pointer h-[18px] w-[18px] bg-white neg-transition-scale" src="{{ url("public/datta-able/fonts/flag/flags/4x3/" . getSVGFlag($language->short_name) . ".svg") }}"
                                             alt="{{ __('Image') }}">
-                                            <p>{{ $language->name }}</p>
+                                            <p style="color: black;">{{ $language->name }}</p>
                                         </a>
                                     @endforeach
                                 </div>
