@@ -1,5 +1,5 @@
 <div>
-    <div class="flex items-center rounded-xl relative justify-center mt-10 mb-11">
+    {{-- <div class="flex items-center rounded-xl relative justify-center mt-10 mb-11">
         <div class="nav-scroller relative overflow-x-auto overflow-y-hidden whitespace-nowrap sidebar-scrollbar subscription-plan-tab">
             <ul class="nav nav-tabs flex justify-around items-center whitespace-nowrap flex-row list-none border border-color-DF dark:border-color-47 p-1.5 rounded-lg relative w-min min-w-full">
                 <li class="nav-item" role="presentation">
@@ -15,7 +15,7 @@
                 </li>
             </ul>
         </div>
-    </div>
+    </div> --}}
     <div class="tab-content mt-6 xl:mt-8" id="tabs-tabContent">
         <div class="tab-pane fade show active" id="tabs-home" role="tabpanel"
             aria-labelledby="tabs-home-tab">

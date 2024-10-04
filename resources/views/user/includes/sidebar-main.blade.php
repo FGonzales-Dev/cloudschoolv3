@@ -572,10 +572,10 @@
         @endif
         </div>
         <div class="sidebar-footer relative mt-auto">
-            <div class="w-[52px] div-border border dark:border-[#474746] border-t border-color-DF ml-5 my-3.5">
-            </div>
+            {{-- <div class="w-[52px] div-border border dark:border-[#474746] border-t border-color-DF ml-5 my-3.5">
+            </div> --}}
             <div class="flex items-center h-[52px] justify-start pl-5 w-full bottom-0 dash-switch">
-                <label for="switch" class="flex items-center cursor-pointer"> 
+                {{-- <label for="switch" class="flex items-center cursor-pointer"> 
                     <div class="relative">
                         <input type="checkbox" id="switch" class="sr-only" {{ \Cookie::get('theme_preference') == 'dark' ? 'checked' : '' }} >
                         <div
@@ -587,7 +587,7 @@
                         <span class="dark:text-[#333332] dark:hidden">{{ __('Dark Mode') }}</span>
                         <span class="dark:text-white text-white dark:flex hidden">{{ __('Light Mode') }}</span>
                     </div>
-                </label>
+                </label> --}}
             </div>
         </div>
     </div>
