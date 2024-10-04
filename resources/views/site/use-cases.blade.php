@@ -18,7 +18,7 @@
                         <a href="{{ route('user.template', $category->slug) }}" class="bg-white dark:bg-color-14 border-dark border-design-2 cursor-pointer rounded-xl border border-color-DF dark:border-[#474746]">
                             <div class="relative">
                                 <div class="p-4 xl:p-[30px] xl:pb-6">
-                                    <img class="rounded-full w-12 h-12 neg-transition-scale"
+                                    <img class="w-12 h-12 neg-transition-scale"
                                     src="{{ $category->fileUrl() }}"
                                     alt="{{ __('Image') }}">
                                     <p class="text-color-14 dark:text-white font-semibold text-18 mt-7 break-words line-clamp-double font-Figtree">{{trimWords ($category->name,65) }}</p>
