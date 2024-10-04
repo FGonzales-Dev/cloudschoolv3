@@ -2,7 +2,7 @@
 @section('content')
     <div class="dark:bg-color-14 -mt-[74px]">
         <div class="section-bg">
-            <p class="text-center text-36 md:text-48 font-RedHat text-color-14 dark:text-white font-bold pt-[118px] md:pt-[162px]">{{ __(':x Use Cases', [ 'x' => preference('company_name') ]) }}</p>
+            <p class="text-center text-36 md:text-48 font-RedHat text-color-14 dark:text-white font-bold pt-[118px] md:pt-[162px]">Your new teaching toolkit</p>
             <div class="flex justify-center pb-[59px] px-5">
                 <p class="text-center text-16 md:text-18 text-color-14 dark:text-white font-normal mt-3 w-[700px] break-words font-Figtree">
                     {!! $useCase == 0 ? __('No templates found under the categories.') : __('A Library of over :x in demand pre-built use case templates to help you get up and running in no time according to your preferences.', ['x' => '<span class="text-color-E2">' . Modules\OpenAI\Entities\UseCase::useCaseCount() . '</span>']) !!}
@@ -31,7 +31,7 @@
                 @endif
             @endforeach
 
-            <div class="rounded-[40px] mt-[31px] relative get-started-for-free text-center">
+            {{-- <div class="rounded-[40px] mt-[31px] relative get-started-for-free text-center">
                 <p class="text-center text-36 md:text-48 text-color-14 font-bold pt-[26px] md:pt-12 font-RedHat break-words px-[26px] lg:px-5">{{ __('All set to level up your content game?') }}</p>
                 <p class="text-center text-16 md:text-18 text-color-14 font-normal px-[26px] sm:px-5 mt-4 md:mt-5 break-words xl:w-[775px] mx-auto font-Figtree">{{ __('Sign up for a Free Trial and discover how easy it can be to create amazing content!') }}</p>
                 <div class="relative pb-10 md:pb-0">
@@ -50,7 +50,7 @@
                     <img class="hidden lg:block absolute bottom-10 z-[50] -left-5 you-tube-rtl neg-transition-scale" src="{{ asset('Modules/OpenAI/Resources/assets/image/youtube.png') }}">
                     <img class="hidden xl:block absolute bottom-5 xl:bottom-[53px] z-[50] -right-[154px] robo-target neg-transition-scale" src="{{ asset('Modules/OpenAI/Resources/assets/image/img-robo-target.png') }}">
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection

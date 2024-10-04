@@ -211,7 +211,7 @@
             @endif
         @endif
 
-        <div class="9xl:px-[310px] 8xl:px-40 lg:px-16 md:px-10 px-5 lg:mt-[120px] py-[52px] lg:pb-16 dark:bg-color-14 text-center">
+        {{-- <div class="9xl:px-[310px] 8xl:px-40 lg:px-16 md:px-10 px-5 lg:mt-[120px] py-[52px] lg:pb-16 dark:bg-color-14 text-center">
             <div class="rounded-[40px] get-started-for-free">
                 <p class="text-center text-36 md:text-48 text-color-14 font-bold pt-[26px] md:pt-12 px-[26px] lg:px-5 font-RedHat">{{ __('All set to level up your content game?') }}</p>
                 <p class="text-center text-16 md:text-18 text-color-14 font-normal px-[26px] sm:px-5 mt-4 md:mt-5 break-words xl:w-[775px] mx-auto font-Figtree">{{ __('Sign up for a Free Trial and discover how easy it can be to create amazing content!') }}</p>
@@ -232,7 +232,7 @@
                     <img class="hidden lg:block absolute bottom-5 xl:bottom-[53px] z-[50] -right-[154px]  robo-target neg-transition-scale" src="{{ asset('Modules/OpenAI/Resources/assets/image/img-robo-target.png') }}">
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 @endsection
 @section('js')
