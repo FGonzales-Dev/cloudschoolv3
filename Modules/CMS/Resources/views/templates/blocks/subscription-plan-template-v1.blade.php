@@ -118,18 +118,21 @@
                     @endforeach
                 </div>
                 <div class="plan-root 6xl:gap-10 lg:gap-5 gap-6 lg:px-0 md:px-10 px-5 w-full flex flex-wrap justify-center {{ count($packages) != 0  ? '6xl:mt-[60px] mt-11' : '' }}">
+                  
                     @foreach($packages as $key => $package)
                         @foreach ($package['billing_cycle'] as $billing_cycle => $value)
                             @continue($value == 0)
                             <div class="{{ $package['parent_class'] }} plan-parent plan-{{ $billing_cycle }} {{ ($hasMonthlyBilling && $billing_cycle == 'monthly') || (!$hasMonthlyBilling && $loop->first) ? '' : 'hidden' }}">
-                                <div class="{{ $package['child_class'] }}">
+                                 <div style="border-radius: 8px;" class="border bg-white dark:bg-color-14 6xl:py-9 py-8 6xl:px-11 lg:px-5 px-8 sub-plan-rtl">
+
+                                    <h1> Test </h1>
                                     <p class="{{ $planTextColor }} text-24 font-medium font-Figtree break-words">{{ $package['name'] }}</p>
                     
                                     <p class="text-36 font-medium font-RedHat {{ $planTextColor }} mt-1">
                                         @if($package['discount_price'][$billing_cycle] > 0)
-                                            <span class="{{ $package['price_color'] }}">{{ formatNumber($package['discount_price'][$billing_cycle]) }}</span>
+                                            <span class="text-48 font-bold break-all">{{ formatNumber($package['discount_price'][$billing_cycle]) }}</span>
                                         @else
-                                            <span class="{{ $package['price_color'] }}">{{ $package['sale_price'][$billing_cycle] == 0 ? __('Free') : formatNumber($package['sale_price'][$billing_cycle]) }}</span>
+                                            <span class="text-48 font-bold break-all">{{ $package['sale_price'][$billing_cycle] == 0 ? __('Free') : formatNumber($package['sale_price'][$billing_cycle]) }}</span>
                                         @endif
                                         <span class="text-18">/{{ ($billing_cycle == 'days' ? $package['duration'] . ' ' : '') . ucfirst($billing_cycle) }}</span>
                                     </p>
@@ -143,7 +146,7 @@
                                         <input type="hidden" name="package_id" value="{{ $package['id'] }}">
                                         <input type="hidden" name="sending_url" value="{{ techEncrypt(route('user.subscription.store')) }}">
                                         <input type="hidden" name="billing_cycle" value="{{ $billing_cycle }}">
-                                        @if (auth()->user() && $package['trial_day'] && !subscription('isUsedTrial', $package['id']))
+                                        {{-- @if (auth()->user() && $package['trial_day'] && !subscription('isUsedTrial', $package['id']))
                                             <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Start :x Days Trial', ['x' => $package['trial_day']]) }}</button>
                                         @elseif (!$subscription?->package?->id)
                                             <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Subscribe Now') }}</button>
@@ -155,7 +158,7 @@
                                             <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Upgrade Plan') }}</button>
                                         @elseif (preference('subscription_change_plan') && preference('subscription_downgrade') && $subscription?->package?->sale_price[$subscription?->billing_cycle] >= $package['sale_price'][$billing_cycle])
                                             <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Downgrade Plan') }}</button>
-                                        @endif
+                                        @endif --}}
                                     </form>
                                     
                                     @php
@@ -172,7 +175,7 @@
                                         $package['features'] = $mainFeature + $package['features'];
                                     @endphp
                                     
-                                    <div class="flex flex-col gap-[18px] mt-8">
+                                    <div style="height:220px;" class="flex flex-col gap-[18px] mt-8">
                                         @foreach($features as $meta)
                                             @continue(empty($meta['title']))
                     
@@ -201,6 +204,19 @@
                                             @endif
                                         @endforeach
                                     </div>
+                                    @if (auth()->user() && $package['trial_day'] && !subscription('isUsedTrial', $package['id']))
+                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Start :x Days Trial', ['x' => $package['trial_day']]) }}</button>
+                                        @elseif (!$subscription?->package?->id)
+                                        <button type="submit" class="{{ $package['button'] . ' '  }} plan-loader flex gap-3 w-full justify-center text-center border border-[#808080] rounded-[12px]" style="border-bottom-width: 4px;">{{ __('Subscribe Now') }}</button>
+                                        @elseif ($subscription?->package?->id == $package['id'] && $billing_cycle == $subscription?->billing_cycle)
+                                            @if ($subscription?->package?->renewable)
+                                                <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3 w-full justify-center text-center border border-[#808080] rounded-[12px]">{{ __('Renew Plan') }}</button>
+                                            @endif
+                                        @elseif (preference('subscription_change_plan') && $subscription?->package?->sale_price[$subscription?->billing_cycle] < $package['sale_price'][$billing_cycle])
+                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3 w-full justify-center text-center border border-[#808080] rounded-[12px]" >{{ __('Upgrade Plan') }}</button>
+                                        @elseif (preference('subscription_change_plan') && preference('subscription_downgrade') && $subscription?->package?->sale_price[$subscription?->billing_cycle] >= $package['sale_price'][$billing_cycle])
+                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3 w-full justify-center text-center  border border-[#808080] rounded-[12px] " >{{ __('Downgrade Plan') }}</button>
+                                        @endif
                                 </div>
                             </div>
                         @endforeach
@@ -209,7 +225,7 @@
             </div>
             <div class="tab-pane fade" id="tabs-category-tab-id-1" role="tabpanel" aria-labelledby="tabs-category-tab">
                 <div class="lg:mt-6 mt-[60px] 6xl:gap-10 lg:gap-5 gap-6 lg:px-0 md:px-10 px-5 w-full flex flex-wrap justify-center" >
-                    @foreach($credits as $key => $credit)                    
+                    @foreach($credits as $key => $credit)         
                         <div class="bg-small-package border border-color-DF bg-white dark:border-color-47 dark:bg-[#3A3A39] rounded-xl p-5 h-max lg:w-[30.33%] pricing-width w-full">
                             <div class="flex flex-col justify-between gap-5 h-full">
                                 <div>
