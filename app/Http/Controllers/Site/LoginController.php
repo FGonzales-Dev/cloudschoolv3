@@ -130,12 +130,11 @@ class LoginController extends Controller
                 }
 
                 if (auth()->user()->role()->type == 'admin') {
-                    return redirect()->intended(route('dashboard'))->withCookie($this->getUserThemePreferenceCookie());
+                    return redirect()->intended(route('openai'))->withCookie($this->getUserThemePreferenceCookie());
                 } else {
-                    return redirect()->intended(route('user.dashboard'))->withCookie($this->getUserThemePreferenceCookie());
+                    return redirect()->intended(route('openai'))->withCookie($this->getUserThemePreferenceCookie());
                 }
             }
-
             return back()->withInput()->withErrors(['error' => __("Invalid User")]);
         } else {
             (new ActivityLogService())->userLogin('failed', 'Incorrect');

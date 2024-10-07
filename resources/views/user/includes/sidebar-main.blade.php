@@ -43,17 +43,17 @@
 <nav id="sidenav"
     class="md:pt-14 h-screen sidebar-nav md:sticky z-[100] md:z-50 top-0 left-0 w-[270px] text-color-14 flex flex-col font-Figtree">
     <div class="sidebar-bg-white h-full py-3.5 flex flex-col">
-        {{-- <div class="sidebar-top relative flex items-center pl-5 dark:border-[#474746] top-option py-3.5 {{ $menu['class'] }} main-menu menus-height">
-            <a href="{{ route('user.dashboard') }}" class="flex w-full gap-3 items-center">
+        <div class="sidebar-top relative flex items-center pl-5 dark:border-[#474746] top-option py-3.5 {{ $menu['class'] }} main-menu menus-height">
+            <a href="{{ route('openai') }}" class="flex w-full gap-3 items-center">
                 <span class="h-5 w-5 category-svg">
-                    <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
+                    <svg class="category-svg" width="16" height="16" viewBox="0 0 16 16" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
-                        d="M5.5 13.1664H10.5V16.4998H5.5V13.1664ZM0.5 15.2164L3.83333 11.8831V16.4998H1.33333C0.875 16.4998 0.5 16.1248 0.5 15.6664V15.2164ZM10.3583 2.99976L3.83333 9.52476L0.5 12.8498V8.49143C0.5 8.28309 0.575 8.09143 0.708333 7.94143C0.716667 7.92476 0.733333 7.91643 0.741667 7.89976L7.40833 1.23309C7.43333 1.20809 7.45 1.19143 7.475 1.18309L7.53333 1.12476C7.86667 0.916428 8.30833 0.949761 8.59167 1.23309L10.3583 2.99976ZM15.5 8.49143V15.6664C15.5 16.1248 15.125 16.4998 14.6667 16.4998H12.1667V9.52476L9.18333 6.54143L11.5417 4.18309L15.2583 7.89976C15.4083 8.05809 15.5 8.26643 15.5 8.49143Z"
-                        fill="url(#paint0_linear_2671_2007)" />
+                        d="M0.5 8.83333H7.16667V0.5H0.5V8.83333ZM0.5 15.5H7.16667V10.5H0.5V15.5ZM8.83333 15.5H15.5V7.16667H8.83333V15.5ZM8.83333 0.5V5.5H15.5V0.5H8.83333Z"
+                        fill="url(#paint0_linear_3040_2060)" />
                     <defs>
-                        <linearGradient id="paint0_linear_2671_2007" x1="10.2526" y1="14.5909" x2="4.74869"
-                            y2="2.57816" gradientUnits="userSpaceOnUse">
+                        <linearGradient id="paint0_linear_3040_2060" x1="10.2526" y1="13.6538"
+                            x2="5.04573" y2="1.90371" gradientUnits="userSpaceOnUse">
                             <stop stop-color="{{ $menu['color1'] }}" />
                             <stop offset="1" stop-color="{{ $menu['color2'] }}" />
                         </linearGradient>
@@ -62,9 +62,10 @@
                 </span>
 
                 <p class="transion-hide text-base leading-[24px] font-normal text-color-14">
-                    <span class="dark:text-white">{{ __('Dashboard') }}</span>
+                    <span class="dark:text-white">{{ __('Tools') }}</span>
                 </p>
             </a>
+            
             <span class="shrink-btn absolute top-[50%] opacity-1 right-3.5 cursor-pointer hidden md:block">
                 <svg class="dark:hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none">
@@ -138,14 +139,16 @@
                 </defs>
             </svg>
             </div>
-        </div> --}}
+        </div> 
+
+        
         <div class="sidebar-links sidebar-accordion middle-sidebar-scroll overflow-y-scroll">
             <ul class="mt-3">
-                {{-- @if($adminTemplateAccess == true || $adminSpeechToTextAccess  == true || $adminTextToSpeechAccess == true || $adminImageAccess == true || $adminCodeAccess == true || $adminLongArticleAccess == true || $adminChatAccess == true)
+                @if($adminTemplateAccess == true || $adminSpeechToTextAccess  == true || $adminTextToSpeechAccess == true || $adminImageAccess == true || $adminCodeAccess == true || $adminLongArticleAccess == true || $adminChatAccess == true)
                 <li class="w-[52px] div-border border dark:border-[#474746] border-t border-color-DF ml-5 my-3.5">
                 </li>
-                @endif --}}
-                @if ($adminTemplateAccess)
+                @endif
+                {{-- @if ($adminTemplateAccess)
                 <li>
                     @php $menu = activeMenu(route('openai'), route('user.template', ['slug' => $slug]) )@endphp
                     @if(customerPanelAccess('template'))
@@ -176,7 +179,7 @@
                     </a>
                     @endif
                 </li>
-                @endif
+                @endif --}}
                 @if ($adminLongArticleAccess)
                 <li>
                     @php $menu = activeMenu(route('user.long_article.create')) @endphp
