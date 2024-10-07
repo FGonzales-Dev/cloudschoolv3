@@ -24,8 +24,8 @@
                         </g>
                         <defs>
                         <linearGradient id="paint0_linear_4514_3509" x1="10.5204" y1="15.7845" x2="2.32033" y2="5.3758" gradientUnits="userSpaceOnUse">
-                        <stop offset="0" stop-color="#E60C84"/>
-                        <stop offset="1" stop-color="#FFCF4B"/>
+                        <stop offset="0" stop-color="#32B9C5"/>
+                        <stop offset="1" stop-color="#32B9C5"/>
                         </linearGradient>
                         <clipPath id="clip0_4514_3509">
                         <rect width="18" height="18" fill="white"/>
@@ -33,7 +33,7 @@
                         </defs>
                     </svg>
 
-                    <p class="text-color-14 dark:text-white font-Figtree font-normal text-[14px] leading-[22px] wrap-anywhere"> {!! __('Credits Balance: :x mins left', ['x' => "<span class='minute-credit-remaining font-semibold dark:text-[#FCCA19] text-[#E22861]'>" . ($minuteLimit == -1 ? __('Unlimited') : ($minuteLeft < 0 ? 0 : formatDecimal($minuteLeft))) . "</span>"]) !!}</p>
+                    <p class="text-color-14 dark:text-white font-Figtree font-normal text-[14px] leading-[22px] wrap-anywhere"> {!! __('Credits Balance: :x mins left', ['x' => "<span class='minute-credit-remaining font-semibold dark:text-[#32B9C5] text-[#32B9C5]'>" . ($minuteLimit == -1 ? __('Unlimited') : ($minuteLeft < 0 ? 0 : formatDecimal($minuteLeft))) . "</span>"]) !!}</p>
                 </div>
             @endif
             <div class="flex flex-col mt-6">

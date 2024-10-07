@@ -1555,6 +1555,10 @@ select {
     stop-color: #FFCF4B !important;
 }
 
+.main-menu stop[stop-color="#32B9C5"] {
+    stop-color: #32B9C5 !important;
+}
+
 .ui-tooltip-content::after,
 .ui-tooltip-content::before {
     content: "";

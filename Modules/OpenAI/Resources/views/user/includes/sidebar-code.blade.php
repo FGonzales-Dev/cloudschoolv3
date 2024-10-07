@@ -21,8 +21,8 @@
                 </g>
                 <defs>
                 <linearGradient id="paint0_linear_4514_3509" x1="10.5204" y1="15.7845" x2="2.32033" y2="5.3758" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#E60C84"/>
-                <stop offset="1" stop-color="#FFCF4B"/>
+                <stop offset="0" stop-color="#32B9C5"/>
+                <stop offset="1" stop-color="#32B9C5"/>
                 </linearGradient>
                 <clipPath id="clip0_4514_3509">
                 <rect width="18" height="18" fill="white"/>

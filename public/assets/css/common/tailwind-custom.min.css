@@ -875,7 +875,7 @@ body.mceContentBody {
 .progress-fill {
     animation: progress-forward 3s;
     background: rgb(34, 193, 195);
-    background: linear-gradient(90deg, #fd7f57 -17.86%, #e22861 25.88%, #763cd4 107.47%);
+
 }
 
 @keyframes progress-forward {
@@ -1498,6 +1498,10 @@ select {
 
 .main-menu stop[stop-color="#FFCF4B"] {
     stop-color: #FFCF4B !important;
+}
+
+.main-menu stop[stop-color="#32B9C5"] {
+    stop-color: #32B9C5 !important;
 }
 
 .ui-tooltip-content::after,
