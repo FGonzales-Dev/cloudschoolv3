@@ -54,7 +54,7 @@
                                 </defs>
                             </svg>
                             <p class="text-color-14 dark:text-white font-Figtree font-normal">
-                                {!! __('Credits Balance: :x character left', ['x' => "<span class='total-character-left font-semibold text-[#E22861] dark:text-[#FCCA19]'>" 
+                                {!! __('Credits Balance: :x character left', ['x' => "<span class='total-character-left font-semibold text-[#32B9C5] dark:text-[#32B9C5]'>" 
                                 . ($characterLimit == -1 ? __('Unlimited') : ($characterLeft < 0 ? 0 : $characterLeft)) . "</span>"]) !!}
                             </p>
                         </div>
