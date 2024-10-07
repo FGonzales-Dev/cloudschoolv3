@@ -7728,7 +7728,7 @@ textarea.form-control.is-invalid {
 
 .border-\[\#F6F3F2\] {
     --tw-border-opacity: 1;
-    border-color: rgb(246 243 242 / var(--tw-border-opacity));
+    border-color: rgb(250 250 250 / var(--tw-border-opacity));
 }
 
 .border-color-47 {
@@ -7892,7 +7892,7 @@ textarea.form-control.is-invalid {
 
 .bg-\[\#F6F3F2\] {
     --tw-bg-opacity: 1;
-    background-color: rgb(246 243 242 / var(--tw-bg-opacity));
+    background-color: rgb(250 250 250 / var(--tw-bg-opacity));
 }
 
 .bg-\[\#F9F7F7\] {
@@ -7998,7 +7998,7 @@ textarea.form-control.is-invalid {
 
 .bg-color-F6 {
     --tw-bg-opacity: 1;
-    background-color: rgb(246 243 242 / var(--tw-bg-opacity));
+    background-color: rgb(250 250 250 / var(--tw-bg-opacity));
 }
 
 .bg-color-FC {
@@ -9568,7 +9568,7 @@ textarea.form-control.is-invalid {
 
 .text-color-F6 {
     --tw-text-opacity: 1;
-    color: rgb(246 243 242 / var(--tw-text-opacity));
+    color: rgb(250 250 250 / var(--tw-text-opacity));
 }
 
 .text-color-FFR {
@@ -11557,7 +11557,7 @@ textarea.form-control.is-invalid {
 
 .hover\:bg-\[\#F6F3F2\]:hover {
     --tw-bg-opacity: 1;
-    background-color: rgb(246 243 242 / var(--tw-bg-opacity));
+    background-color: rgb(250 250 250 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-color-14:hover {
@@ -11567,7 +11567,7 @@ textarea.form-control.is-invalid {
 
 .hover\:bg-color-F6:hover {
     --tw-bg-opacity: 1;
-    background-color: rgb(246 243 242 / var(--tw-bg-opacity));
+    background-color: rgb(250 250 250 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-color-FC:hover {
@@ -11943,7 +11943,7 @@ textarea.form-control.is-invalid {
 
 :is(.dark .dark\:bg-color-F6) {
     --tw-bg-opacity: 1;
-    background-color: rgb(246 243 242 / var(--tw-bg-opacity));
+    background-color: rgb(250 250 250 / var(--tw-bg-opacity));
 }
 
 :is(.dark .dark\:bg-gray-800) {
@@ -14833,7 +14833,7 @@ textarea.form-control.is-invalid {
 
     .xl\:bg-\[\#F6F3F2\] {
         --tw-bg-opacity: 1;
-        background-color: rgb(246 243 242 / var(--tw-bg-opacity));
+        background-color: rgb(250 250 250 / var(--tw-bg-opacity));
     }
 
     .xl\:p-6 {

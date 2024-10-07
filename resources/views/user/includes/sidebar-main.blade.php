@@ -43,7 +43,7 @@
 <nav id="sidenav"
     class="md:pt-14 h-screen sidebar-nav md:sticky z-[100] md:z-50 top-0 left-0 w-[270px] text-color-14 flex flex-col font-Figtree">
     <div class="sidebar-bg-white h-full py-3.5 flex flex-col">
-        <div class="sidebar-top relative flex items-center pl-5 dark:border-[#474746] top-option py-3.5 {{ $menu['class'] }} main-menu menus-height">
+        {{-- <div class="sidebar-top relative flex items-center pl-5 dark:border-[#474746] top-option py-3.5 {{ $menu['class'] }} main-menu menus-height">
             <a href="{{ route('user.dashboard') }}" class="flex w-full gap-3 items-center">
                 <span class="h-5 w-5 category-svg">
                     <svg width="16" height="17" viewBox="0 0 16 17" fill="none"
@@ -138,13 +138,13 @@
                 </defs>
             </svg>
             </div>
-        </div>
+        </div> --}}
         <div class="sidebar-links sidebar-accordion middle-sidebar-scroll overflow-y-scroll">
             <ul class="mt-3">
-                @if($adminTemplateAccess == true || $adminSpeechToTextAccess  == true || $adminTextToSpeechAccess == true || $adminImageAccess == true || $adminCodeAccess == true || $adminLongArticleAccess == true || $adminChatAccess == true)
+                {{-- @if($adminTemplateAccess == true || $adminSpeechToTextAccess  == true || $adminTextToSpeechAccess == true || $adminImageAccess == true || $adminCodeAccess == true || $adminLongArticleAccess == true || $adminChatAccess == true)
                 <li class="w-[52px] div-border border dark:border-[#474746] border-t border-color-DF ml-5 my-3.5">
                 </li>
-                @endif
+                @endif --}}
                 @if ($adminTemplateAccess)
                 <li>
                     @php $menu = activeMenu(route('openai'), route('user.template', ['slug' => $slug]) )@endphp
@@ -171,7 +171,7 @@
                             
 
                             <p class="transion-hide accordion-menus"><span
-                                    class="dark:text-white">{{ __('Pre-built Templates') }}</span></p>
+                                    class="dark:text-white">{{ __('Tools') }}</span></p>
                         </div>
                     </a>
                     @endif
