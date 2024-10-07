@@ -124,8 +124,6 @@
                             @continue($value == 0)
                             <div class="{{ $package['parent_class'] }} plan-parent plan-{{ $billing_cycle }} {{ ($hasMonthlyBilling && $billing_cycle == 'monthly') || (!$hasMonthlyBilling && $loop->first) ? '' : 'hidden' }}">
                                  <div style="border-radius: 8px;" class="border bg-white dark:bg-color-14 6xl:py-9 py-8 6xl:px-11 lg:px-5 px-8 sub-plan-rtl">
-
-                                    <h1> Test </h1>
                                     <p class="{{ $planTextColor }} text-24 font-medium font-Figtree break-words">{{ $package['name'] }}</p>
                     
                                     <p class="text-36 font-medium font-RedHat {{ $planTextColor }} mt-1">
