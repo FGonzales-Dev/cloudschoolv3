@@ -165,7 +165,7 @@
         <div>
             <p class="text-13 xs:text-15 font-normal text-color-14 dark:text-white mt-6 text-center">{{ __('Already have an account?')}} <a class="text-15 font-semibold underline" href="{{ route('login') }}">{{ __('Sign in')}}</a> </p>
         </div>
-        <img class="absolute bottom-[83px] right-[-117px] z-[-11] hidden md:block scale-x-[-1]" src="{{ asset('Modules/OpenAI/Resources/assets/image/robotlog.png') }}" alt="robotlog">
+        {{-- <img class="absolute bottom-[83px] right-[-117px] z-[-11] hidden md:block scale-x-[-1]" src="{{ asset('Modules/OpenAI/Resources/assets/image/robotlog.png') }}" alt="robotlog"> --}}
     </div>
 </div>
 @endsection

@@ -162,7 +162,7 @@
                     <p class="text-13 xs:text-15 font-normal text-color-14 dark:text-white mt-6 text-center">{{ __('Don’t have an account?')}} <a class="text-15 font-semibold underline" href="{{ route('users.registration') }}">{{ __('Register for free')}}</a> </p>
                 </div>
             @endif
-            <img class="absolute bottom-[132px] left-[-117px] z-[-11] hidden md:block robot-log neg-transition-scale" src="{{ asset('Modules/OpenAI/Resources/assets/image/robotlog.png') }}" alt="robotlog">
+            {{-- <img class="absolute bottom-[132px] left-[-117px] z-[-11] hidden md:block robot-log neg-transition-scale" src="{{ asset('Modules/OpenAI/Resources/assets/image/robotlog.png') }}" alt="robotlog"> --}}
         </div>
     </div>
 @endsection
