@@ -4,7 +4,8 @@
 
         {{-- <nav
             class="flex h-[56px] items-center justify-between bg-color-2C transition-all duration-500 ease-in-out dark:bg-[#141414]"> --}}
-            <nav class="flex h-[56px] items-center justify-between transition-all duration-500 ease-in-out bg-white">
+            <nav class="flex h-[56px] items-center justify-between transition-all duration-500 ease-in-out bg-white border-b border-b-[1px] border-b-[rgb(229,231,235)]">
+
             <div class="w-full h-[56px] flex items-center justify-between md:mx-5 gap-3">
 
                 <div class="flex items-center justify-center">
