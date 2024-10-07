@@ -670,7 +670,7 @@
                         </p>
                         <div
                             class="relative h-1 w-full bg-white dark:bg-color-3A rounded-[25px] border border-color-DF dark:border-color-47 mt-3">
-                            <div class="progress-fill absolute h-1 rounded-[60px] w-[30%]"
+                            <div class="absolute h-1 rounded-[60px] w-[30%]"
                                 style="width: {{ $creditLimit == -1 ? 0 : (100 - $creditPercentage > 100 ? 100 : 100 - $creditPercentage) }}%">
                             </div>
                         </div>
