@@ -20,7 +20,7 @@
                         </svg>
                     </div>
 
-                    <a href="{{ route('user.dashboard') }}" class="b-brand">
+                    <a href="{{ route('openai') }}" class="b-brand">
                         @php
                             $logo = App\Models\Preference::getLogo('company_logo');
                         @endphp
