@@ -517,7 +517,7 @@ input[type="email"] :focus-visible {
 }
 
 .magic-bg {
-    background: linear-gradient(180deg, #a26ef7 0%, #763cd4 100%) !important;
+    background: #32B9C5 !important;
 }
 
 .magic-shadow {

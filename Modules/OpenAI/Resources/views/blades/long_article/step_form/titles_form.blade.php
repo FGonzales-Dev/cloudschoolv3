@@ -72,7 +72,7 @@
         @endif
 
         <div class="mt-6">
-            <button class="bg-[#333332] dark:bg-[#141414] w-full rounded-xl text-16 text-white font-semibold py-3 flex justify-center items-center gap-3" id="TitleGenerateButton">
+            <button class="bg-[#32B9C5] dark:bg-[#141414] w-full rounded-xl text-16 text-white font-semibold py-3 flex justify-center items-center gap-3" id="TitleGenerateButton">
                 <span>
                     {{ __('Generate Titles') }}
                 </span>
