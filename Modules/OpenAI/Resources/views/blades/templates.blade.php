@@ -103,7 +103,7 @@
                                 <div class="tab-content-{{$useCase->id}}">
                                     <a href="{{ route('user.template', $useCase->slug) }}">
                                         <div class="p-4 xl:p-[30px] xl:pb-6">
-                                            <img class="rounded-full w-12 h-12 neg-transition-scale" src="{{ asset($useCase->fileUrl()) }}" alt="{{ __('Image') }}">
+                                            <img class="w-12 h-12 neg-transition-scale" src="{{ asset($useCase->fileUrl()) }}" alt="{{ __('Image') }}">
                                             <p class="text-color-14 dark:text-white font-semibold text-18 mt-7 break-words line-clamp-double">
                                                 {{ trimWords($useCase->name, 55) }}
                                             </p>
@@ -144,7 +144,7 @@
                                 <div class="tab-content-{{$useCase->id}}">
                                     <a href="{{ route('user.template', $useCase->slug) }}">
                                         <div class="p-4 xl:p-[30px] xl:pb-6">
-                                            <img class="rounded-full w-12 h-12 neg-transition-scale" src="{{ asset($useCase->fileUrl()) }}" alt="{{ __('Image') }}">
+                                            <img class="w-12 h-12 neg-transition-scale" src="{{ asset($useCase->fileUrl()) }}" alt="{{ __('Image') }}">
                                             <p class="text-color-14 dark:text-white font-semibold text-18 mt-7 break-words line-clamp-double">{{ trimWords($useCase->name, 55) }}</p>
                                             <p class="text-13 xl:text-14 text-color-14 dark:text-color-DF font-light mt-2.5 break-all">
                                                 {{ trimWords($useCase->description,85)}}
@@ -186,7 +186,7 @@
                             <div class="tab-content-{{$useCase->id}}">
                                 <a href="{{ route('user.template', $useCase->slug) }}">
                                     <div class="p-4 xl:p-[30px] xl:pb-6">
-                                        <img class="rounded-full w-12 h-12 neg-transition-scale" src="{{ asset($useCase->fileUrl()) }}" alt="{{ __('Image') }}">
+                                        <img class="w-12 h-12 neg-transition-scale" src="{{ asset($useCase->fileUrl()) }}" alt="{{ __('Image') }}">
                                         <p class="text-color-14 dark:text-white font-semibold text-18 mt-7 break-words line-clamp-double">
                                             {{ trimWords($useCase->name, 55) }}
                                         </p>

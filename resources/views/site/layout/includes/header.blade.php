@@ -147,7 +147,7 @@
                                         </div>
                                     </a>
                                     <div class="pt-4 pb-2">
-                                        <a href="{{ Auth::user()->role()->type == 'admin' ? route('openai') : route('openai') }}" class="flex justify-start items-center gap-1.5 text-14 font-normal text-color-14 dark:text-white font-Figtree px-[18px]">
+                                        <a href="{{ Auth::user()->role()->type == 'admin' ? route('dashboard') : route('openai') }}" class="flex justify-start items-center gap-1.5 text-14 font-normal text-color-14 dark:text-white font-Figtree px-[18px]">
                                             <svg class="neg-transition-scale" width="16" height="16" viewBox="0 0 16 16" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <g clip-path="url(#clip0_2465_1852)">
