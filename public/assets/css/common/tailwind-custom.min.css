@@ -875,7 +875,10 @@ body.mceContentBody {
 .progress-fill {
     animation: progress-forward 3s;
     background: rgb(34, 193, 195);
-
+    background: linear-gradient(90deg,
+            #32B9C5 -17.86%,
+            #32B9C5 25.88%,
+            #32B9C5 107.47%);
 }
 
 @keyframes progress-forward {
