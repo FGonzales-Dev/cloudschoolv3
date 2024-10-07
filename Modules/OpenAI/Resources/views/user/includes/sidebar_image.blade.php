@@ -4,7 +4,7 @@
 
 @php
     $imageLeft = 0;
-    if ($userSubscription  && in_array($userSubscription->status, ['Active', 'Cancel'])) {
+    if ($userSubscription && in_array($userSubscription->status, ['Active', 'Cancel'])) {
         $imageLeft = $featureLimit['image']['remain'];
         $imageLimit = $featureLimit['image']['limit'];
     }
@@ -13,29 +13,41 @@
 @endphp
 <form id="openai-image-form" enctype='multipart/form-data'>
     <div class="px-5 py-[22px] sm:py-8 xl:p-6 xl:pb-[56px] pt-14 font-Figtree">
-        <p class="text-color-14 text-24 font-semibold font-RedHat dark:text-white">{{ __('Create images like never before!') }}</p>
+        <p class="text-color-14 text-24 font-semibold font-RedHat dark:text-white">
+            {{ __('Create images like never before!') }}</p>
         <p class="text-color-89 text-[13px] leading-5 font-medium font-Figtree mt-2">
             {{ __('Generate your imagination to real images with help of AI.') }} </p>
-        <p class="text-color-89 text-[13px] leading-5 font-medium font-Figtree -mt-1"><span class="text-color-14 dark:text-white">{{ __('Note:') }}</span>{{ __('Generated images are free for both personal & commercial use.') }}</p>
+        <p class="text-color-89 text-[13px] leading-5 font-medium font-Figtree -mt-1"><span
+                class="text-color-14 dark:text-white">{{ __('Note:') }}</span>{{ __('Generated images are free for both personal & commercial use.') }}
+        </p>
         @if ($imageLeft && auth()->user()->id == $userId)
-        <div class="bg-white dark:bg-[#474746] p-3 rounded-xl flex items-center justify-start mt-6 gap-2.5">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <g clip-path="url(#clip0_4514_3509)">
-                <path d="M13.9714 7.00665C13.8679 6.84578 13.6901 6.75015 13.5 6.75015H9.56255V0.562738C9.56255 0.297241 9.37693 0.0677446 9.11706 0.0126204C8.85269 -0.0436289 8.59394 0.0924942 8.48594 0.334366L3.986 10.4592C3.90838 10.6325 3.92525 10.835 4.02875 10.9936C4.13225 11.1533 4.31 11.2501 4.50012 11.2501H8.43757V17.4375C8.43757 17.703 8.62319 17.9325 8.88306 17.9876C8.92244 17.9955 8.96181 18 9.00006 18C9.21831 18 9.42193 17.8729 9.51418 17.6659L14.0141 7.54102C14.0906 7.36664 14.076 7.1664 13.9714 7.00665Z" fill="url(#paint0_linear_4514_3509)"/>
-                </g>
-                <defs>
-                <linearGradient id="paint0_linear_4514_3509" x1="10.5204" y1="15.7845" x2="2.32033" y2="5.3758" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#32B9C5"/>
-                <stop offset="1" stop-color="#32B9C5"/>
-                </linearGradient>
-                <clipPath id="clip0_4514_3509">
-                <rect width="18" height="18" fill="white"/>
-                </clipPath>
-                </defs>
-            </svg>
+            <div class="bg-white dark:bg-[#474746] p-3 rounded-xl flex items-center justify-start mt-6 gap-2.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"
+                    fill="none">
+                    <g clip-path="url(#clip0_4514_3509)">
+                        <path
+                            d="M13.9714 7.00665C13.8679 6.84578 13.6901 6.75015 13.5 6.75015H9.56255V0.562738C9.56255 0.297241 9.37693 0.0677446 9.11706 0.0126204C8.85269 -0.0436289 8.59394 0.0924942 8.48594 0.334366L3.986 10.4592C3.90838 10.6325 3.92525 10.835 4.02875 10.9936C4.13225 11.1533 4.31 11.2501 4.50012 11.2501H8.43757V17.4375C8.43757 17.703 8.62319 17.9325 8.88306 17.9876C8.92244 17.9955 8.96181 18 9.00006 18C9.21831 18 9.42193 17.8729 9.51418 17.6659L14.0141 7.54102C14.0906 7.36664 14.076 7.1664 13.9714 7.00665Z"
+                            fill="url(#paint0_linear_4514_3509)" />
+                    </g>
+                    <defs>
+                        <linearGradient id="paint0_linear_4514_3509" x1="10.5204" y1="15.7845" x2="2.32033"
+                            y2="5.3758" gradientUnits="userSpaceOnUse">
+                            <stop offset="0" stop-color="#32B9C5" />
+                            <stop offset="1" stop-color="#32B9C5" />
+                        </linearGradient>
+                        <clipPath id="clip0_4514_3509">
+                            <rect width="18" height="18" fill="white" />
+                        </clipPath>
+                    </defs>
+                </svg>
 
-            <p class="text-color-14 dark:text-white font-Figtree font-normal">{!! __('Credits Balance: :x images left', ['x' => "<span class='image-credit-remaining font-semibold dark:text-[#FCCA19]'>" . ($imageLimit == -1 ? __('Unlimited') : ($imageLeft < 0 ? 0 : $imageLeft)) . "</span>"]) !!}</p>
-        </div>
+                <p class="text-color-14 dark:text-white font-Figtree font-normal">{!! __('Credits Balance: :x images left', [
+                    'x' =>
+                        "<span class='image-credit-remaining font-semibold dark:text-[#FCCA19]'>" .
+                        ($imageLimit == -1 ? __('Unlimited') : ($imageLeft < 0 ? 0 : $imageLeft)) .
+                        '</span>',
+                ]) !!}</p>
+            </div>
         @endif
 
         @if (isset($providers) && count($providers) > 1)
@@ -44,9 +56,10 @@
                     <label>{{ __('Choose Engine') }}</label>
                     <select
                         class="select block w-full text-base leading-6 font-medium text-color-2C bg-white bg-clip-padding bg-no-repeat dark:bg-[#333332] rounded-xl dark:rounded-2xl m-0 focus:text-color-2C focus:bg-white focus:border-color-89 focus:outline-none"
-                            id="choose_engine">
-                        @foreach ( $providers as $data )
-                            <option value="{{ $data }}" data-provider="{{ providerClassName($data) }}"> {{ $engine[$data] }} </option>
+                        id="choose_engine">
+                        @foreach ($providers as $data)
+                            <option value="{{ $data }}" data-provider="{{ providerClassName($data) }}">
+                                {{ $engine[$data] }} </option>
                         @endforeach
                     </select>
                 </div>
@@ -59,12 +72,13 @@
         <div class="flex flex-col mt-6 {{ $modelName == 'clipdrop' ? '' : 'hidden' }}">
             <div class="font-normal custom-dropdown-arrow text-14 text-color-2C dark:text-white">
                 <label>{{ __('Choose Service') }}</label>
-                
+
                 <select
                     class="select block w-full text-base leading-6 font-medium text-color-2C bg-white bg-clip-padding bg-no-repeat dark:bg-[#333332] rounded-xl dark:rounded-2xl m-0 focus:text-color-2C focus:bg-white focus:border-color-89 focus:outline-none"
-                        id="choose_service">
-                    @foreach ( $clipdropEngines as $engine )
-                        <option value="{{ $engine }}" data-service="{{ $engine }}"> {{ $service[$engine] }} </option>
+                    id="choose_service">
+                    @foreach ($clipdropEngines as $engine)
+                        <option value="{{ $engine }}" data-service="{{ $engine }}">
+                            {{ $service[$engine] }} </option>
                     @endforeach
                 </select>
             </div>
@@ -75,20 +89,22 @@
                 for="">{{ __('Image Prompt') }}</label>
             <textarea
                 class="image-textarea questions dynamic-input peer py-1.5 mt-1.5 text-base overflow-y-scroll middle-sidebar-scroll leading-6 font-light text-color-14 dark:text-white bg-white dark:bg-[#333332] bg-clip-padding bg-no-repeat border border-solid border-color-89 dark:!border-color-47 rounded-xl m-0 focus:text-color-14 focus:bg-white focus:border-color-89 focus:dark:!border-color-47 focus:outline-none min-h-[auto] w-full px-4 outline-none form-control"
-                id="image-description" placeholder="{{ __('Briefly write down the description of the image you have in mind..') }}" maxlength="" required oninvalid="this.setCustomValidity('{{ __('This field is required.') }}')" rows="3" name="image_description">{{ request('promt') ?? '' }}</textarea>
+                id="image-description" placeholder="{{ __('Briefly write down the description of the image you have in mind..') }}"
+                maxlength="" required oninvalid="this.setCustomValidity('{{ __('This field is required.') }}')" rows="3"
+                name="image_description">{{ request('promt') ?? '' }}</textarea>
         </div>
 
         <div class="image-appended-data">
-            @if ( $modelName != 'openai' )
+            @if ($modelName != 'openai')
                 <div class="flex flex-col mt-6">
                     <label class="font-normal text-14 text-color-2C dark:text-white"
                         for="">{{ __('Image To Image') }}</label>
-                        <input
+                    <input
                         class="w-full cursor-pointer rounded-xl border border-color-89 dark:border-color-47 px-3 file:-mx-3 file:cursor-pointer file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit dark:file:!bg-[#474746] file:bg-color-DF file:px-3 file:py-4 file:h-16 h-12 bg-white dark:bg-[#333332] file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] file:text-color-14 dark:file:text-white form-control text-color-14 dark:text-white file:transition-none focus:outline-none focus:dark:!border-color-47"
                         name="image" id="file_input" type="file" />
                 </div>
             @endif
-            
+
             @if ($meta->{$modelName . '_variant'} || $meta->{$modelName . '_resulation'})
                 <div class="grid grid-cols-2 gap-6 justify-between mt-6">
                     @if ($meta->{$modelName . '_variant'})
@@ -98,14 +114,15 @@
                                 <select
                                     class="select block w-full text-base leading-6 font-medium text-color-2C bg-white bg-clip-padding bg-no-repeat dark:bg-[#333332] rounded-xl dark:rounded-2xl m-0 focus:text-color-2C focus:bg-white focus:border-color-89 focus:outline-none"
                                     id="variant">
-                                    @foreach ( processPreferenceData($meta->{$modelName . '_variant'}) as $key => $data )
-                                        <option value="{{ $data }}" {{ $key == 0 ? 'selected' : '' }}> {{ $data }} </option>
+                                    @foreach (processPreferenceData($meta->{$modelName . '_variant'}) as $key => $data)
+                                        <option value="{{ $data }}" {{ $key == 0 ? 'selected' : '' }}>
+                                            {{ $data }} </option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                     @endif
-                    
+
                     @if ($meta->{$modelName . '_resulation'})
                         <div>
                             <div>
@@ -114,11 +131,11 @@
                                     <select
                                         class="select block w-full text-base leading-6 font-medium text-color-2C bg-white bg-clip-padding bg-no-repeat dark:bg-[#333332] rounded-xl dark:rounded-2xl m-0 focus:text-color-2C focus:bg-white focus:border-color-89 focus:outline-none"
                                         id="size">
-                                        
-                                        @foreach (sortResolution(processPreferenceData($meta->{$modelName . '_resulation'})) as $key => $data )
-                    
-                                            <option value="{{ $data }}" {{ $key == 0 ? 'selected' : '' }} {{ !subscription('isAdminSubscribed') && !subscription('isValidResolution', $userId, $data) ? 'disabled' : ''  }}> {{ $data }} </option>
-                    
+
+                                        @foreach (sortResolution(processPreferenceData($meta->{$modelName . '_resulation'})) as $key => $data)
+                                            <option value="{{ $data }}" {{ $key == 0 ? 'selected' : '' }}
+                                                {{ !subscription('isAdminSubscribed') && !subscription('isValidResolution', $userId, $data) ? 'disabled' : '' }}>
+                                                {{ $data }} </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -135,9 +152,12 @@
                             <div>
                                 <div class="font-normal custom-dropdown-arrow text-14 text-color-2C dark:text-white">
                                     <label>{{ __('Image Style') }}</label>
-                                    <select class="select block w-full text-base leading-6 font-medium text-color-2C bg-white bg-clip-padding bg-no-repeat dark:bg-[#333332] rounded-xl dark:rounded-2xl m-0 focus:text-color-2C focus:bg-white focus:border-color-89 focus:outline-none" id="art-style">
-                                        @foreach ( processPreferenceData($meta->{$modelName . '_artStyle'}) as $key => $data)
-                                            <option value="{{ $data }}" {{ $key == 0 ? 'selected' : '' }}> {{ $data }} </option>
+                                    <select
+                                        class="select block w-full text-base leading-6 font-medium text-color-2C bg-white bg-clip-padding bg-no-repeat dark:bg-[#333332] rounded-xl dark:rounded-2xl m-0 focus:text-color-2C focus:bg-white focus:border-color-89 focus:outline-none"
+                                        id="art-style">
+                                        @foreach (processPreferenceData($meta->{$modelName . '_artStyle'}) as $key => $data)
+                                            <option value="{{ $data }}" {{ $key == 0 ? 'selected' : '' }}>
+                                                {{ $data }} </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -149,10 +169,12 @@
                         <div class="font-normal custom-dropdown-arrow text-14 text-color-2C dark:text-white">
                             <label>{{ __('Lighting Effects') }}</label>
                             <select
-                                class="select block w-full text-base leading-6 font-medium text-color-2C bg-white bg-clip-padding bg-no-repeat rounded-xl dark:bg-[#333332] dark:rounded-2xl m-0 focus:text-color-2C focus:bg-white focus:border-color-89 focus:outline-none" id="ligting-style">
-                                    @foreach ( processPreferenceData($meta->{$modelName . '_lightingStyle'}) as $key => $data)
-                                        <option value="{{ $data }}" {{ $key == 0 ? 'selected' : '' }}> {{ $data }} </option>
-                                    @endforeach
+                                class="select block w-full text-base leading-6 font-medium text-color-2C bg-white bg-clip-padding bg-no-repeat rounded-xl dark:bg-[#333332] dark:rounded-2xl m-0 focus:text-color-2C focus:bg-white focus:border-color-89 focus:outline-none"
+                                id="ligting-style">
+                                @foreach (processPreferenceData($meta->{$modelName . '_lightingStyle'}) as $key => $data)
+                                    <option value="{{ $data }}" {{ $key == 0 ? 'selected' : '' }}>
+                                        {{ $data }} </option>
+                                @endforeach
                             </select>
                         </div>
                     @endif
@@ -160,11 +182,14 @@
             @endif
         </div>
         <div class="image-input-loader mx-auto mt-12 hidden">
-            <svg class="animate-spin h-7 w-7 m-auto" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle class="loading-circle-large" cx="40" cy="40" r="36" stroke="#E60C84" stroke-width="8" />
-           </svg>
-          <p class="text-center text-color-14 dark:text-white text-12 mt-2 font-normal font-Figtree ">{{ __('Processing..')}}</p>
-      </div>
+            <svg class="animate-spin h-7 w-7 m-auto" width="80" height="80" viewBox="0 0 80 80" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle class="loading-circle-large" cx="40" cy="40" r="36" stroke="#E60C84"
+                    stroke-width="8" />
+            </svg>
+            <p class="text-center text-color-14 dark:text-white text-12 mt-2 font-normal font-Figtree ">
+                {{ __('Processing..') }}</p>
+        </div>
 
         <div class="mt-6 xl:my-6">
             <button

@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3TJDKCW5TP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3TJDKCW5TP');
+</script>
     <meta charset="UTF-8" />
     <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noodp,notranslate,noimageindex" />
     <title>Welcome to Symfony!</title>

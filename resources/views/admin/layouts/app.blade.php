@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ App::getLocale() }}" dir="{{ languageDirection() }}">
     <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3TJDKCW5TP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3TJDKCW5TP');
+</script>
         <title>{{ trimWords(preference('company_name'), 17) }} | @yield('page_title', env('APP_NAME', ''))</title>
         <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

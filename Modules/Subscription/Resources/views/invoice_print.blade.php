@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3TJDKCW5TP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3TJDKCW5TP');
+</script>
     <meta charset="utf-8">
     <title>{{ __('Invoice') }}</title>
     <link rel="stylesheet" href="{{ asset('public/dist/css/pdf/pdf-invoice.min.css') }}">

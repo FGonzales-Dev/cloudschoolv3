@@ -10,58 +10,72 @@
 @endphp
 <form id="openai-code-form">
     <div class="px-5 py-[22px] sm:py-8 xl:p-6 xl:pb-[56px] font-Figtree">
-        <p class="text-color-14 text-24 font-semibold font-RedHat dark:text-white">{{ __('Write codes without coding!')}}</p>
-        <p class="text-color-89 text-13 font-medium font-Figtree mt-2">{{ __('Let our AI write codes for your project and solve problems to speed up your work whether you know or not know any coding.') }}
+        <p class="text-color-14 text-24 font-semibold font-RedHat dark:text-white">
+            {{ __('Write codes without coding!') }}</p>
+        <p class="text-color-89 text-13 font-medium font-Figtree mt-2">
+            {{ __('Let our AI write codes for your project and solve problems to speed up your work whether you know or not know any coding.') }}
         </p>
         @if ($wordLeft && auth()->user()->id == $userId)
-        <div class="bg-white dark:bg-[#474746] p-3 rounded-xl flex items-center justify-start mt-6 gap-2.5">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <g clip-path="url(#clip0_4514_3509)">
-                <path d="M13.9714 7.00665C13.8679 6.84578 13.6901 6.75015 13.5 6.75015H9.56255V0.562738C9.56255 0.297241 9.37693 0.0677446 9.11706 0.0126204C8.85269 -0.0436289 8.59394 0.0924942 8.48594 0.334366L3.986 10.4592C3.90838 10.6325 3.92525 10.835 4.02875 10.9936C4.13225 11.1533 4.31 11.2501 4.50012 11.2501H8.43757V17.4375C8.43757 17.703 8.62319 17.9325 8.88306 17.9876C8.92244 17.9955 8.96181 18 9.00006 18C9.21831 18 9.42193 17.8729 9.51418 17.6659L14.0141 7.54102C14.0906 7.36664 14.076 7.1664 13.9714 7.00665Z" fill="url(#paint0_linear_4514_3509)"/>
-                </g>
-                <defs>
-                <linearGradient id="paint0_linear_4514_3509" x1="10.5204" y1="15.7845" x2="2.32033" y2="5.3758" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="#32B9C5"/>
-                <stop offset="1" stop-color="#32B9C5"/>
-                </linearGradient>
-                <clipPath id="clip0_4514_3509">
-                <rect width="18" height="18" fill="white"/>
-                </clipPath>
-                </defs>
-            </svg>
+            <div class="bg-white dark:bg-[#474746] p-3 rounded-xl flex items-center justify-start mt-6 gap-2.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <g clip-path="url(#clip0_4514_3509)">
+                        <path
+                            d="M13.9714 7.00665C13.8679 6.84578 13.6901 6.75015 13.5 6.75015H9.56255V0.562738C9.56255 0.297241 9.37693 0.0677446 9.11706 0.0126204C8.85269 -0.0436289 8.59394 0.0924942 8.48594 0.334366L3.986 10.4592C3.90838 10.6325 3.92525 10.835 4.02875 10.9936C4.13225 11.1533 4.31 11.2501 4.50012 11.2501H8.43757V17.4375C8.43757 17.703 8.62319 17.9325 8.88306 17.9876C8.92244 17.9955 8.96181 18 9.00006 18C9.21831 18 9.42193 17.8729 9.51418 17.6659L14.0141 7.54102C14.0906 7.36664 14.076 7.1664 13.9714 7.00665Z"
+                            fill="url(#paint0_linear_4514_3509)" />
+                    </g>
+                    <defs>
+                        <linearGradient id="paint0_linear_4514_3509" x1="10.5204" y1="15.7845" x2="2.32033"
+                            y2="5.3758" gradientUnits="userSpaceOnUse">
+                            <stop offset="0" stop-color="#32B9C5" />
+                            <stop offset="1" stop-color="#32B9C5" />
+                        </linearGradient>
+                        <clipPath id="clip0_4514_3509">
+                            <rect width="18" height="18" fill="white" />
+                        </clipPath>
+                    </defs>
+                </svg>
 
-            <p class="text-color-14 dark:text-white font-Figtree font-normal">{!! __('Credits Balance: :x words left', ['x' => "<span class='total-word-left font-semibold dark:text-[#FCCA19]'>" . ($wordLimit == -1 ? __('Unlimited') : ($wordLeft < 0 ? 0 : $wordLeft)) . "</span>"]) !!}</p>
-        </div>
+                <p class="text-color-14 dark:text-white font-Figtree font-normal">{!! __('Credits Balance: :x words left', [
+                    'x' =>
+                        "<span class='total-word-left font-semibold dark:text-[#FCCA19]'>" .
+                        ($wordLimit == -1 ? __('Unlimited') : ($wordLeft < 0 ? 0 : $wordLeft)) .
+                        '</span>',
+                ]) !!}</p>
+            </div>
         @endif
         <!-- Provider -->
-        <div class="custom-dropdown-arrow font-normal text-14 text-[#141414] dark:text-white {{ count($aiProviders) == 0 ? 'hidden' : '' }}">
+        <div
+            class="custom-dropdown-arrow font-normal text-14 text-[#141414] dark:text-white {{ count($aiProviders) == 0 ? 'hidden' : '' }}">
             <label>{{ __('Provider') }}</label>
-            <select class="select block w-full mt-[3px] text-base leading-6 font-medium text-color-FFR bg-white bg-clip-padding bg-no-repeat dark:bg-[#333332] rounded-xl dark:rounded-2xl focus:text-color-2C focus:bg-white focus:border-color-89 focus:outline-none form-control" name="provider" id="provider">
+            <select
+                class="select block w-full mt-[3px] text-base leading-6 font-medium text-color-FFR bg-white bg-clip-padding bg-no-repeat dark:bg-[#333332] rounded-xl dark:rounded-2xl focus:text-color-2C focus:bg-white focus:border-color-89 focus:outline-none form-control"
+                name="provider" id="provider">
                 @foreach ($aiProviders as $provider => $value)
                     @php
                         $providerName = str_replace('code_', '', $provider);
                     @endphp
-                        <option value="{{ $providerName }}"> {{ ucwords($providerName) }} </option>
+                    <option value="{{ $providerName }}"> {{ ucwords($providerName) }} </option>
                 @endforeach
             </select>
         </div>
         <div class="flex flex-col mt-6">
-            <label class="require text-color-14 dark:text-white font-Figtree text-14 font-normal mb-1.5" for="">{{ __('Code Description') }}</label>
+            <label class="require text-color-14 dark:text-white font-Figtree text-14 font-normal mb-1.5"
+                for="">{{ __('Code Description') }}</label>
             <textarea
                 class="questions dynamic-input peer py-1.5 mt-1.5 text-base overflow-y-scroll middle-sidebar-scroll leading-6 font-light !text-color-14 dark:!text-white bg-white dark:bg-[#333332] bg-clip-padding bg-no-repeat border border-solid border-color-89 dark:!border-color-47 rounded-xl m-0 focus:text-color-14 focus:bg-white focus:border-color-89 focus:dark:!border-color-47 focus:outline-none w-full px-4 outline-none form-control"
-                id="code-description" placeholder="{{ __('Briefly write down the description of the problem you want to solve..') }}" maxlength="" required
-                oninvalid="this.setCustomValidity('{{ __('This field is required.') }}')" rows="3"
+                id="code-description"
+                placeholder="{{ __('Briefly write down the description of the problem you want to solve..') }}" maxlength=""
+                required oninvalid="this.setCustomValidity('{{ __('This field is required.') }}')" rows="3"
                 name="code_description"></textarea>
         </div>
         @if (count($aiProviders))
-        <p class="mt-6 cursor-pointer AdavanceOption dark:text-white">{{ __('Advance Options') }}</p>
+            <p class="mt-6 cursor-pointer AdavanceOption dark:text-white">{{ __('Advance Options') }}</p>
         @endif
 
-        @if(count($aiProviders))
+        @if (count($aiProviders))
             <div id="ProviderOptionDiv" class="hidden">
 
                 @foreach ($aiProviders as $provider => $providerOptions)
-
                     @if (!empty($providerOptions))
                         @php
                             $providerName = str_replace('code_', '', $provider);
@@ -70,11 +84,17 @@
                         <div class="gap-6 pt-3 grid grid-cols-2 ProviderOptions {{ $providerName . '_div' }}">
                             @foreach ($fields as $field)
                                 @if ($field['type'] == 'dropdown')
-                                    <div class="custom-dropdown-arrow font-normal text-14 text-[#141414] dark:text-white  {{ count($field['value']) == 0 ? 'hidden' : '' }}">
+                                    <div
+                                        class="custom-dropdown-arrow font-normal text-14 text-[#141414] dark:text-white  {{ count($field['value']) == 0 ? 'hidden' : '' }}">
                                         <label>{{ $field['label'] }}</label>
-                                        <select class="select block w-full mt-[3px] text-base leading-6 font-medium text-color-FFR bg-white bg-clip-padding bg-no-repeat dark:bg-[#333332] rounded-xl dark:rounded-2xl focus:text-color-2C focus:bg-white focus:border-color-89 focus:outline-none form-control" name="{{ $providerName . '[' . $field['name'] . ']' }}" id="{{ $field['name'] }}">
+                                        <select
+                                            class="select block w-full mt-[3px] text-base leading-6 font-medium text-color-FFR bg-white bg-clip-padding bg-no-repeat dark:bg-[#333332] rounded-xl dark:rounded-2xl focus:text-color-2C focus:bg-white focus:border-color-89 focus:outline-none form-control"
+                                            name="{{ $providerName . '[' . $field['name'] . ']' }}"
+                                            id="{{ $field['name'] }}">
                                             @foreach ($field['value'] as $value)
-                                                <option value="{{ $value }}" {{ isset($field['default_value']) && $field['default_value'] == $value ? 'selected' : '' }}> {{ $value }} </option>
+                                                <option value="{{ $value }}"
+                                                    {{ isset($field['default_value']) && $field['default_value'] == $value ? 'selected' : '' }}>
+                                                    {{ $value }} </option>
                                             @endforeach
                                         </select>
                                     </div>
