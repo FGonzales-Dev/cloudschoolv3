@@ -545,8 +545,8 @@
                         </g>
                         <defs>
                         <linearGradient id="paint0_linear_5419_1957" x1="9.35152" y1="14.0307" x2="2.06253" y2="4.77849" gradientUnits="userSpaceOnUse">
-                        <stop offset="0" stop-color="#E60C84"/>
-                        <stop offset="1" stop-color="#FFCF4B"/>
+                        <stop offset="0" stop-color="#32B9C5"/>
+                        <stop offset="1" stop-color="#32B9C5"/>
                         </linearGradient>
                         <clipPath id="clip0_5419_1957">
                         <rect width="16" height="16" fill="white"/>
@@ -556,7 +556,7 @@
                     <p class="text-color-14 dark:text-white text-sm font-semibold font-Figtree">{{ optional($subscription->package)->name }}</p>
                 </div>
                 <p class="text-color-14 dark:text-white font-Figtree font-normal text-sm mt-2.5">
-                    {!! __('You have :x words left in your :y plan', [ 'x' =>  '<span class="total-word-used text-[#E22861] dark:text-[#FCCA19]">' . ($creditUsed) . '</span>' .  '<span class="credit-limit text-[#E22861] dark:text-[#FCCA19]">/' . ($creditLimit == -1 ? __('Unlimited') : $creditLimit) . '</span>', 'y' => ($subscription->billing_cycle == 'days' ? $subscription->duration . ' ' : '') . $subscription->billing_cycle ]) !!}
+                    {!! __('You have :x words left in your :y plan', [ 'x' =>  '<span class="total-word-used text-[#32B9C5] dark:text-[#32B9C5]">' . ($creditUsed) . '</span>' .  '<span class="credit-limit text-[#32B9C5] dark:text-[#32B9C5]">/' . ($creditLimit == -1 ? __('Unlimited') : $creditLimit) . '</span>', 'y' => ($subscription->billing_cycle == 'days' ? $subscription->duration . ' ' : '') . $subscription->billing_cycle ]) !!}
                 </p>
                 <div
                     class="relative h-1 w-full bg-white dark:bg-color-3A rounded-[25px] border border-color-DF dark:border-color-47 mt-3">
