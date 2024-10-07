@@ -12,7 +12,7 @@
             <img class="mt-11 hidden dark:block w-[157px] h-[42px] object-contain" src="{{ $logoDark }}" alt="{{ __('Logo') }}">
         </a>
         <div class="relative bg-white dark:bg-[#3A3A39] rounded-3xl w-[350px] xs:w-[388px] sm:w-[506px] h-max px-4 sm:px-10 py-8 z-[2] mt-11">
-            <p class="text-center text-24 font-bold text-color-14 dark:text-white">{{ __('Sign in to :x', ['x' => preference('company_name')])}}</p>
+            <p class="text-center text-24 font-bold text-color-14 dark:text-white">{{ __('Sign in to Cloudschool')}}</p>
             @if(is_array($preference) && count($preference) > 0)
                 @if(in_array("Google", $preference))
                 <a class="relative block text-center bg-[#4285F4] rounded-xl py-3 mt-6 text-white text-16 font-semibold" href="{{ route('login.google') }}">{{ __('Continue with Google')}}
