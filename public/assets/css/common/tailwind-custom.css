@@ -391,7 +391,8 @@ html[dir="rtl"] .custom-dropdown-arrow:after {
 .border-design-1 {
     border-right-width: 3px;
     border-style: solid;
-    border-image: linear-gradient(to bottom, #ffcf4b, #e60c84) 1;
+    border-image: linear-gradient(to bottom, #32B9C5, #32B9C5) 1;
+
 }
 
 .border-design-2:hover {
@@ -1009,7 +1010,7 @@ body.shrink .details-body {
 }
 
 .section-bg {
-    background-color: #f6f3f2;
+    background-color: #FFFFFF;
     background-image: url("../../image/loginbg.png");
     background-repeat: no-repeat, repeat;
     background-position: 100%;
