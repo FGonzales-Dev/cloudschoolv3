@@ -20,7 +20,7 @@ use App\Http\Controllers\User\{
 
 
 Route::prefix('user')->name('user.')->middleware(['auth', 'locale'])->group(function () {
-    //  Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
     Route::post('/profile/update', [UserController::class, 'update'])->middleware(['checkForDemoMode'])->name('userProfileUpdate');
     Route::post('/profile/update-password', [UserController::class, 'updatePassword'])->middleware(['checkForDemoMode'])->name('userProfileUpdatePassword');
