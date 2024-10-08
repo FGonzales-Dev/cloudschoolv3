@@ -675,7 +675,7 @@
                             </div>
                         </div>
                         <a class="magic-bg rounded-xl text-[13px] text-white justify-center items-center font-semibold py-2 w-full mx-auto flex text-center mt-4 cursor-pointer font-Figtree"
-                            href="{{ route('frontend.pricing') }}">
+                            href="{{ route('site.pricing') }}">
                             <span>
                                 {{ __('Upgrade') }}
                             </span>

@@ -27,7 +27,7 @@ Route::group(['middleware' => ['locale']], function () {
     })->name('frontend.index');
     Route::get('/use-cases', 'FrontendController@useCases')->name('frontend.use-cases');
     Route::get('/privacy-policy', 'FrontendController@privacyPolicy')->name('frontend.privacy-policy');
-    Route::get('/page/pricing', 'FrontendController@pricing')->name('frontend.pricing');
+    Route::get('/pricing', 'FrontendController@pricing')->name('frontend.pricing');
 
 
     // login register
@@ -62,6 +62,7 @@ Route::group(['middleware' => ['locale']], function () {
 
     // Pages
     Route::get('page/{slug}', 'SiteController@page')->name('site.page');
+    Route::get('page/pricing', 'SiteController@page')->name('site.pricing');
     Route::get('/get-component-product', 'SiteController@getComponentProduct')->name('ajax-product');
 
     // Language
