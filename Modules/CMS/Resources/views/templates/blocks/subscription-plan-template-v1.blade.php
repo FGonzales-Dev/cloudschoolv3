@@ -152,119 +152,127 @@
                         </div>
                     @endforeach
                 </div>
-                <div
-                    class="plan-root 6xl:gap-10 lg:gap-5 gap-6 lg:px-0 md:px-10 px-5 w-full flex flex-wrap justify-center {{ count($packages) != 0 ? '6xl:mt-[60px] mt-11' : '' }}">
+                <div style=" height: auto;"
+                    class="plan-root 6xl:gap-10 lg:gap-5 gap-6 lg:px-0 md:px-10 px-5 min-w-full flex flex-wrap justify-center {{ count($packages) != 0 ? '6xl:mt-[60px] mt-11' : '' }}">
 
                     @foreach ($packages as $key => $package)
                         @foreach ($package['billing_cycle'] as $billing_cycle => $value)
                             @continue($value == 0)
                             <div
-                                class="{{ $package['parent_class'] }} plan-parent plan-{{ $billing_cycle }} {{ ($hasMonthlyBilling && $billing_cycle == 'monthly') || (!$hasMonthlyBilling && $loop->first) ? '' : 'hidden' }}">
-                                <div style="border-radius: 8px;"
-                                    class="border bg-white dark:bg-color-14 6xl:py-9 py-8 6xl:px-11 lg:px-5 px-8 sub-plan-rtl">
-                                    <p class="{{ $planTextColor }} text-24 font-medium font-Figtree break-words">
-                                        {{ $package['name'] }}</p>
+                                style="{{ $package['parent_class'] }} plan-parent
+                            plan-{{ $billing_cycle }}
+                            {{ ($hasMonthlyBilling && $billing_cycle == 'monthly') || (!$hasMonthlyBilling && $loop->first) ? '' : 'hidden' }}">
+                                <div style="height: 100%; border-radius: 8px;"
+                                    class="border bg-white dark:bg-color-14 6xl:py-9 py-8 6xl:px-11 lg:px-5 px-8 sub-plan-rtl flex flex-col justify-between">
+                                    <div class="flex flex-col">
+                                        <h1> Test </h1>
+                                        <p class="{{ $planTextColor }} text-24 font-medium font-Figtree break-words">
+                                            {{ $package['name'] }}</p>
 
-                                    <p class="text-36 font-medium font-RedHat {{ $planTextColor }} mt-1">
-                                        @if ($package['discount_price'][$billing_cycle] > 0)
+                                        <p class="text-36 font-medium font-RedHat {{ $planTextColor }} mt-1">
+                                            @if ($package['discount_price'][$billing_cycle] > 0)
+                                                <span
+                                                    class="text-48 font-bold break-all">{{ formatNumber($package['discount_price'][$billing_cycle]) }}</span>
+                                            @else
+                                                <span
+                                                    class="text-48 font-bold break-all">{{ $package['sale_price'][$billing_cycle] == 0 ? __('Free') : formatNumber($package['sale_price'][$billing_cycle]) }}</span>
+                                            @endif
                                             <span
-                                                class="text-48 font-bold break-all">{{ formatNumber($package['discount_price'][$billing_cycle]) }}</span>
-                                        @else
-                                            <span
-                                                class="text-48 font-bold break-all">{{ $package['sale_price'][$billing_cycle] == 0 ? __('Free') : formatNumber($package['sale_price'][$billing_cycle]) }}</span>
-                                        @endif
-                                        <span
-                                            class="text-18">/{{ ($billing_cycle == 'days' ? $package['duration'] . ' ' : '') . ucfirst($billing_cycle) }}</span>
-                                    </p>
+                                                class="text-18">/{{ ($billing_cycle == 'days' ? $package['duration'] . ' ' : '') . ucfirst($billing_cycle) }}</span>
+                                        </p>
 
-                                    @if (preference('apply_coupon_subscription'))
-                                        <form action="{{ route('user.subscription.checkout') }}" method="GET"
-                                            class="button-need-disable">
-                                        @else
-                                            <form action="{{ route('user.subscription.store') }}" method="POST"
+                                        @if (preference('apply_coupon_subscription'))
+                                            <form action="{{ route('user.subscription.checkout') }}" method="GET"
                                                 class="button-need-disable">
-                                                @csrf
-                                    @endif
-                                    <input type="hidden" name="package_id" value="{{ $package['id'] }}">
-                                    <input type="hidden" name="sending_url"
-                                        value="{{ techEncrypt(route('user.subscription.store')) }}">
-                                    <input type="hidden" name="billing_cycle" value="{{ $billing_cycle }}">
-                                    {{-- @if (auth()->user() && $package['trial_day'] && !subscription('isUsedTrial', $package['id']))
-                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Start :x Days Trial', ['x' => $package['trial_day']]) }}</button>
-                                        @elseif (!$subscription?->package?->id)
-                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Subscribe Now') }}</button>
-                                        @elseif ($subscription?->package?->id == $package['id'] && $billing_cycle == $subscription?->billing_cycle)
-                                            @if ($subscription?->package?->renewable)
-                                                <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3">{{ __('Renew Plan') }}</button>
-                                            @endif
-                                        @elseif (preference('subscription_change_plan') && $subscription?->package?->sale_price[$subscription?->billing_cycle] < $package['sale_price'][$billing_cycle])
-                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Upgrade Plan') }}</button>
-                                        @elseif (preference('subscription_change_plan') && preference('subscription_downgrade') && $subscription?->package?->sale_price[$subscription?->billing_cycle] >= $package['sale_price'][$billing_cycle])
-                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Downgrade Plan') }}</button>
-                                        @endif --}}
-                                    </form>
+                                            @else
+                                                <form action="{{ route('user.subscription.store') }}" method="POST"
+                                                    class="button-need-disable">
+                                                    @csrf
+                                        @endif
+                                        <input type="hidden" name="package_id" value="{{ $package['id'] }}">
+                                        <input type="hidden" name="sending_url"
+                                            value="{{ techEncrypt(route('user.subscription.store')) }}">
+                                        <input type="hidden" name="billing_cycle" value="{{ $billing_cycle }}">
+                                        {{-- @if (auth()->user() && $package['trial_day'] && !subscription('isUsedTrial', $package['id']))
+                                        <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Start :x Days Trial', ['x' => $package['trial_day']]) }}</button>
+                                    @elseif (!$subscription?->package?->id)
+                                        <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Subscribe Now') }}</button>
+                                    @elseif ($subscription?->package?->id == $package['id'] && $billing_cycle == $subscription?->billing_cycle)
+                                        @if ($subscription?->package?->renewable)
+                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3">{{ __('Renew Plan') }}</button>
+                                        @endif
+                                    @elseif (preference('subscription_change_plan') && $subscription?->package?->sale_price[$subscription?->billing_cycle] < $package['sale_price'][$billing_cycle])
+                                        <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Upgrade Plan') }}</button>
+                                    @elseif (preference('subscription_change_plan') && preference('subscription_downgrade') && $subscription?->package?->sale_price[$subscription?->billing_cycle] >= $package['sale_price'][$billing_cycle])
+                                        <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Downgrade Plan') }}</button>
+                                    @endif --}}
+                                        </form>
 
-                                    @php
+                                        @php
 
-                                        $mainFeature = [];
-                                        foreach (
-                                            Modules\Subscription\Services\PackageService::features()
-                                            as $key => $value
-                                        ) {
-                                            if (isset($package['features'][$key])) {
-                                                $mainFeature[$key] = $package['features'][$key];
-                                                unset($package['features'][$key]);
+                                            $mainFeature = [];
+                                            foreach (
+                                                Modules\Subscription\Services\PackageService::features()
+                                                as $key => $value
+                                            ) {
+                                                if (isset($package['features'][$key])) {
+                                                    $mainFeature[$key] = $package['features'][$key];
+                                                    unset($package['features'][$key]);
+                                                }
                                             }
-                                        }
 
-                                        $features = $mainFeature + $package['features'];
-                                        $package['features'] = $mainFeature + $package['features'];
-                                    @endphp
+                                            $features = $mainFeature + $package['features'];
+                                            $package['features'] = $mainFeature + $package['features'];
+                                        @endphp
 
-                                    <div style="height:220px;" class="flex flex-col gap-[18px] mt-8">
-                                        @foreach ($features as $meta)
-                                            @continue(empty($meta['title']))
+                                        <div class="flex flex-col gap-[18px] mt-8">
+                                            @foreach ($features as $meta)
+                                                @continue(empty($meta['title']))
 
-                                            @if ($meta['is_visible'])
-                                                <div
-                                                    class="flex items-center {{ $planTextColor }} text-16 font-medium font-Figtree gap-[9px]">
-                                                    @if ($meta['status'] == 'Active')
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15"
-                                                            height="11" viewBox="0 0 15 11" fill="none">
-                                                            <path
-                                                                d="M13.88 1.17017C14.2755 1.56567 14.2755 2.20798 13.88 2.60349L5.77995 10.7035C5.38444 11.099 4.74214 11.099 4.34663 10.7035L0.296631 6.65349C-0.0988769 6.25798 -0.0988769 5.61567 0.296631 5.22017C0.692139 4.82466 1.33444 4.82466 1.72995 5.22017L5.06487 8.55192L12.4498 1.17017C12.8453 0.774658 13.4876 0.774658 13.8831 1.17017H13.88Z"
-                                                                fill="currentColor" />
-                                                        </svg>
-                                                    @else
-                                                        <svg width="13" height="14" viewBox="0 0 13 14"
-                                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                d="M1.09014 1.59014C1.46032 1.21995 2.06051 1.21995 2.4307 1.59014L6.5 5.65944L10.5693 1.59014C10.9395 1.21995 11.5397 1.21995 11.9099 1.59014C12.28 1.96032 12.28 2.56051 11.9099 2.9307L7.84056 7L11.9099 11.0693C12.28 11.4395 12.28 12.0397 11.9099 12.4099C11.5397 12.78 10.9395 12.78 10.5693 12.4099L6.5 8.34056L2.4307 12.4099C2.06051 12.78 1.46032 12.78 1.09014 12.4099C0.719954 12.0397 0.719954 11.4395 1.09014 11.0693L5.15944 7L1.09014 2.9307C0.719954 2.56051 0.719954 1.96032 1.09014 1.59014Z"
-                                                                fill="#DF2F2F" />
-                                                        </svg>
-                                                    @endif
-                                                    @if ($meta['type'] != 'number')
-                                                        <span class="break-words"> {{ $meta['title'] }} </span>
-                                                    @elseif ($meta['title_position'] == 'before')
-                                                        <span class="break-words"> {{ $meta['title'] . ': ' }}
-                                                            {{ $meta['value'] == -1 ? __('Unlimited') : $meta['value'] }}
-                                                        </span>
-                                                    @else
-                                                        <span class="break-words">
-                                                            {{ $meta['value'] == -1 ? __('Unlimited') : $meta['value'] }}
-                                                            {{ $meta['title'] }} </span>
-                                                    @endif
-                                                </div>
-                                            @endif
-                                        @endforeach
+                                                @if ($meta['is_visible'])
+                                                    <div
+                                                        class="flex items-center {{ $planTextColor }} text-16 font-medium font-Figtree gap-[9px]">
+                                                        @if ($meta['status'] == 'Active')
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="15"
+                                                                height="11" viewBox="0 0 15 11" fill="none">
+                                                                <path
+                                                                    d="M13.88 1.17017C14.2755 1.56567 14.2755 2.20798 13.88 2.60349L5.77995 10.7035C5.38444 11.099 4.74214 11.099 4.34663 10.7035L0.296631 6.65349C-0.0988769 6.25798 -0.0988769 5.61567 0.296631 5.22017C0.692139 4.82466 1.33444 4.82466 1.72995 5.22017L5.06487 8.55192L12.4498 1.17017C12.8453 0.774658 13.4876 0.774658 13.8831 1.17017H13.88Z"
+                                                                    fill="currentColor" />
+                                                            </svg>
+                                                        @else
+                                                            <svg width="13" height="14" viewBox="0 0 13 14"
+                                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                    d="M1.09014 1.59014C1.46032 1.21995 2.06051 1.21995 2.4307 1.59014L6.5 5.65944L10.5693 1.59014C10.9395 1.21995 11.5397 1.21995 11.9099 1.59014C12.28 1.96032 12.28 2.56051 11.9099 2.9307L7.84056 7L11.9099 11.0693C12.28 11.4395 12.28 12.0397 11.9099 12.4099C11.5397 12.78 10.9395 12.78 10.5693 12.4099L6.5 8.34056L2.4307 12.4099C2.06051 12.78 1.46032 12.78 1.09014 12.4099C0.719954 12.0397 0.719954 11.4395 1.09014 11.0693L5.15944 7L1.09014 2.9307C0.719954 2.56051 0.719954 1.96032 1.09014 1.59014Z"
+                                                                    fill="#DF2F2F" />
+                                                            </svg>
+                                                        @endif
+                                                        @if ($meta['type'] != 'number')
+                                                            <span class="break-words"> {{ $meta['title'] }} </span>
+                                                        @elseif ($meta['title_position'] == 'before')
+                                                            <span class="break-words"> {{ $meta['title'] . ': ' }}
+                                                                {{ $meta['value'] == -1 ? __('Unlimited') : $meta['value'] }}
+                                                            </span>
+                                                        @else
+                                                            <span class="break-words">
+                                                                {{ $meta['value'] == -1 ? __('Unlimited') : $meta['value'] }}
+                                                                {{ $meta['title'] }} </span>
+                                                        @endif
+                                                    </div>
+                                                @endif
+                                            @endforeach
+
+                                        </div>
+
                                     </div>
+
                                     @if (auth()->user() && $package['trial_day'] && !subscription('isUsedTrial', $package['id']))
                                         <button type="submit"
                                             class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3">{{ __('Start :x Days Trial', ['x' => $package['trial_day']]) }}</button>
                                     @elseif (!$subscription?->package?->id)
                                         <button type="submit"
                                             class="{{ $package['button'] . ' ' }} plan-loader flex gap-3 w-full justify-center text-center border border-[#808080] rounded-[12px]"
-                                            style="border-bottom-width: 4px;">{{ __('Subscribe Now') }}</button>
+                                            style="border-bottom-width: 4px; ">{{ __('Subscribe Now') }}</button>
                                     @elseif ($subscription?->package?->id == $package['id'] && $billing_cycle == $subscription?->billing_cycle)
                                         @if ($subscription?->package?->renewable)
                                             <button type="submit"
