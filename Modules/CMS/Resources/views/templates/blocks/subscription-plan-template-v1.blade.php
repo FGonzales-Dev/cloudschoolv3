@@ -152,7 +152,7 @@
                         </div>
                     @endforeach
                 </div>
-                <div style="background: green; height: auto;"
+                <div style="height: auto;"
                     class="plan-root 6xl:gap-10 lg:gap-5 gap-6 lg:px-0 md:px-10 px-5 min-w-full flex flex-wrap justify-center {{ count($packages) != 0 ? '6xl:mt-[60px] mt-11' : '' }}">
 
                     @foreach ($packages as $key => $package)
@@ -162,10 +162,9 @@
                                 style="{{ $package['parent_class'] }} plan-parent
                                 plan-{{ $billing_cycle }}
                                 {{ ($hasMonthlyBilling && $billing_cycle == 'monthly') || (!$hasMonthlyBilling && $loop->first) ? '' : 'hidden' }}">
-                                <div style="height: 100%; border-radius: 8px; border-color: red;"
+                                <div style="height: 100%; border-radius: 8px;"
                                     class="border bg-white dark:bg-color-14 6xl:py-9 py-8 6xl:px-11 lg:px-5 px-8 sub-plan-rtl flex flex-col justify-between">
                                     <div class="flex flex-col">
-                                        <h1> Test </h1>
                                         <p class="{{ $planTextColor }} text-24 font-medium font-Figtree break-words">
                                             {{ $package['name'] }}</p>
 
