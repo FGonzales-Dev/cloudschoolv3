@@ -473,7 +473,7 @@ input[type="email"] :focus-visible {
 }
 
 .background-gradient-one {
-    background: linear-gradient(180deg, #a26ef7 0%, #763cd4 100%) !important;
+    background: linear-gradient(180deg, #32B9C5 0%, #32B9C5 100%) !important;
 }
 
 /* scroll to right left in the templates page */
@@ -1548,11 +1548,11 @@ select {
 }
 
 .main-menu stop[stop-color="#E60C84"] {
-    stop-color: #E60C84 !important;
+    stop-color: #32B9C5 !important;
 }
 
 .main-menu stop[stop-color="#FFCF4B"] {
-    stop-color: #FFCF4B !important;
+    stop-color: #32B9C5 !important;
 }
 
 .main-menu stop[stop-color="#32B9C5"] {
