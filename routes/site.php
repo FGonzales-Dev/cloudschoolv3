@@ -27,7 +27,7 @@ Route::group(['middleware' => ['locale']], function () {
     })->name('frontend.index');
     Route::get('/use-cases', 'FrontendController@useCases')->name('frontend.use-cases');
     Route::get('/privacy-policy', 'FrontendController@privacyPolicy')->name('frontend.privacy-policy');
-    Route::get('/page/pricing', 'FrontendController@pricing')->name('frontend.pricing');
+    Route::get('/pricing', 'FrontendController@pricing')->name('frontend.pricing');
 
 
     // login register
