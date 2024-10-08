@@ -221,7 +221,7 @@
                                         $package['features'] = $mainFeature + $package['features'];
                                     @endphp
 
-                                    <div style="height:220px;" class="flex flex-col gap-[18px] mt-8">
+                                    <div class="flex flex-col gap-[18px] mt-8">
                                         @foreach ($features as $meta)
                                             @continue(empty($meta['title']))
 
