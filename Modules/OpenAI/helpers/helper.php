@@ -13,7 +13,7 @@ if (!function_exists('activeMenu')) {
     function activeMenu(...$routeName )
     {
         if (in_array(url()->current(), $routeName)) {
-            return ['color1' => '#E60C84', 'color2' => '#FFCF4B', 'class' => 'bg-color-F6 dark:bg-color-47 border-design-1', 'collapse' => 'show', 'parent-border' => 'border-design-1'];
+            return ['color1' => '#32B9C5', 'color2' => '#32B9C5', 'class' => 'bg-color-F6 dark:bg-color-47 border-design-1', 'collapse' => 'show', 'parent-border' => 'border-design-1'];
         }
 
        return ['color1' => '#141414', 'color2' => '#141414', 'class' => '', 'collapse' => '', 'parent-border' => ''];
@@ -30,7 +30,7 @@ if (!function_exists('accountSidebarActiveMenu')) {
     function accountSidebarActiveMenu(...$routeName )
     {
         if (in_array(url()->current(), $routeName)) {
-            return ['class' => 'border-design-3-active', 'color1' => '#E60C84', 'color2' => '#FFCF4B' ];
+            return ['class' => 'border-design-3-active', 'color1' => '#32B9C5', 'color2' => '#32B9C5' ];
         }
 
        return ['class' => 'border-color-DF dark:border-[#474746]', 'color1' => '#898989', 'color2' => '#898989'];

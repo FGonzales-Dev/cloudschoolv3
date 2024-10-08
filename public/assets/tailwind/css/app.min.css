@@ -8092,7 +8092,7 @@ textarea.form-control.is-invalid {
 }
 
 .from-rose-400 {
-    --tw-gradient-from: #fb7185 var(--tw-gradient-from-position);
+    --tw-gradient-from: #32B9C5 var(--tw-gradient-from-position);
     --tw-gradient-to: rgb(251 113 133 / 0) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
@@ -8112,7 +8112,7 @@ textarea.form-control.is-invalid {
 }
 
 .to-indigo-500 {
-    --tw-gradient-to: #6366f1 var(--tw-gradient-to-position);
+    --tw-gradient-to: #32B9C5 var(--tw-gradient-to-position);
 }
 
 .bg-clip-padding {

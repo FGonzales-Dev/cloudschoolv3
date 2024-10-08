@@ -77,14 +77,14 @@
             <span class="shrink-btn absolute top-[50%] opacity-1 right-3.5 cursor-pointer hidden md:block">
                 <svg class="dark:hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none">
-                    <rect width="24" height="24" rx="4" fill="#141414" />
+                    <rect width="24" height="24" rx="4" fill="white" />
                     <g clip-path="url(#clip0_344_741)">
                         <path
                             d="M9.95841 7.91675H12.5834L9.66674 12.0001L12.5834 16.0834H9.95841L7.04174 12.0001L9.95841 7.91675Z"
-                            fill="white" />
+                            fill="#32B9C5" />
                         <path
                             d="M15.0417 7.91675H17.6667L14.7501 12.0001L17.6667 16.0834H15.0417L12.1251 12.0001L15.0417 7.91675Z"
-                            fill="white" />
+                            fill="#32B9C5" />
                     </g>
                     <defs>
                         <clipPath id="clip0_344_741">
