@@ -118,16 +118,22 @@
     <div>
         {{-- <div class="flex items-center rounded-xl relative justify-center mt-10 mb-11">
             <div class="nav-scroller relative overflow-x-auto overflow-y-hidden whitespace-nowrap sidebar-scrollbar">
-                <ul class="nav nav-tabs flex justify-around items-center whitespace-nowrap flex-row list-none border border-color-DF dark:border-color-47 p-1.5 rounded-lg relative w-min min-w-full">
+                <ul
+                    class="nav nav-tabs flex justify-around items-center whitespace-nowrap flex-row list-none border border-color-DF dark:border-color-47 p-1.5 rounded-lg relative w-min min-w-full">
                     <li class="nav-item" role="presentation">
-                        <a href="#tabs-home" class="nav-parent rounded-lg block font-medium text-15 px-8 py-2.5 active {{ $textColor }}" 
-                        id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#tabs-home" data-category-id="0" role="tab" aria-controls="tabs-home" aria-selected="true">
+                        <a href="#tabs-home"
+                            class="nav-parent rounded-lg block font-medium text-15 px-8 py-2.5 active {{ $textColor }}"
+                            id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#tabs-home" data-category-id="0"
+                            role="tab" aria-controls="tabs-home" aria-selected="true">
                             {!! $component->plan_btn_name !!}
                         </a>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <a href="#tabs-category-tab-id-1" class="nav-parent rounded-lg block font-medium text-15 px-8 py-2.5 {{ $textColor }}" 
-                        id="tabs-category-id-1" data-bs-toggle="pill" data-bs-target="#tabs-category-tab-id-1" data-category-id="1" role="tab" aria-controls="tabs-category-tab-id-1" aria-selected="false">
+                        <a href="#tabs-category-tab-id-1"
+                            class="nav-parent rounded-lg block font-medium text-15 px-8 py-2.5 {{ $textColor }}"
+                            id="tabs-category-id-1" data-bs-toggle="pill" data-bs-target="#tabs-category-tab-id-1"
+                            data-category-id="1" role="tab" aria-controls="tabs-category-tab-id-1"
+                            aria-selected="false">
                             {!! $component->credit_btn_name !!}
                         </a>
                     </li>
@@ -136,7 +142,7 @@
         </div> --}}
         <div class="tab-content mt-6 xl:mt-8" id="tabs-tabContent">
             <div class="tab-pane fade show active" id="tabs-home" role="tabpanel" aria-labelledby="tabs-home-tab">
-                <div class="check-billing flex justify-center items-center mt-10 mb-11 flex-wrap px-5 gap-3">
+                {{-- <div class="check-billing flex justify-center items-center mt-10 mb-11 flex-wrap px-5 gap-3">
                     @php
                         $hasMonthlyBilling = array_key_exists('monthly', $billingCycles);
                     @endphp
@@ -151,7 +157,34 @@
                             </label>
                         </div>
                     @endforeach
+                </div> --}}
+
+
+                <div class="check-billing flex justify-center items-center mt-10 mb-11 flex-wrap px-5 gap-3">
+                    @php
+                        // Check if 'monthly' exists and move it to the beginning of the array
+                        $hasMonthlyBilling = array_key_exists('monthly', $billingCycles);
+                        if ($hasMonthlyBilling) {
+                            $monthly = ['monthly' => $billingCycles['monthly']];
+                            unset($billingCycles['monthly']); // Remove 'monthly' from the original array
+                            $billingCycles = $monthly + $billingCycles; // Prepend 'monthly' to the start
+                        }
+                    @endphp
+
+                    @foreach ($billingCycles as $key => $value)
+                        <div class="radio-container-payment">
+                            <input class="cursor-pointer" type="radio" name="check_billing"
+                                id="check_{{ $key }}" value="{{ $key }}"
+                                {{ ($hasMonthlyBilling && $key == 'monthly') || (!$hasMonthlyBilling && $loop->first) ? 'checked' : '' }} />
+                            <label class="font-Figtree text-base leading-4 font-medium break-words {{ $textColor }}"
+                                for="check_{{ $key }}">
+                                {{ $value }}
+                            </label>
+                        </div>
+                    @endforeach
                 </div>
+
+
                 <div style="height: auto;"
                     class="plan-root 6xl:gap-10 lg:gap-5 gap-6 lg:px-0 md:px-10 px-5 min-w-full flex flex-wrap justify-center {{ count($packages) != 0 ? '6xl:mt-[60px] mt-11' : '' }}">
 
@@ -159,12 +192,13 @@
                         @foreach ($package['billing_cycle'] as $billing_cycle => $value)
                             @continue($value == 0)
                             <div
-                                style="{{ $package['parent_class'] }} plan-parent
+                                class="$package['parent_class'] }} plan-parent
                                 plan-{{ $billing_cycle }}
                                 {{ ($hasMonthlyBilling && $billing_cycle == 'monthly') || (!$hasMonthlyBilling && $loop->first) ? '' : 'hidden' }}">
                                 <div style="height: 100%; border-radius: 8px;"
                                     class="border bg-white dark:bg-color-14 6xl:py-9 py-8 6xl:px-11 lg:px-5 px-8 sub-plan-rtl flex flex-col justify-between">
                                     <div class="flex flex-col">
+                                        <h1> Test </h1>
                                         <p class="{{ $planTextColor }} text-24 font-medium font-Figtree break-words">
                                             {{ $package['name'] }}</p>
 
@@ -193,18 +227,18 @@
                                             value="{{ techEncrypt(route('user.subscription.store')) }}">
                                         <input type="hidden" name="billing_cycle" value="{{ $billing_cycle }}">
                                         {{-- @if (auth()->user() && $package['trial_day'] && !subscription('isUsedTrial', $package['id']))
-                                        <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Start :x Days Trial', ['x' => $package['trial_day']]) }}</button>
-                                    @elseif (!$subscription?->package?->id)
-                                        <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Subscribe Now') }}</button>
-                                    @elseif ($subscription?->package?->id == $package['id'] && $billing_cycle == $subscription?->billing_cycle)
-                                        @if ($subscription?->package?->renewable)
-                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3">{{ __('Renew Plan') }}</button>
-                                        @endif
-                                    @elseif (preference('subscription_change_plan') && $subscription?->package?->sale_price[$subscription?->billing_cycle] < $package['sale_price'][$billing_cycle])
-                                        <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Upgrade Plan') }}</button>
-                                    @elseif (preference('subscription_change_plan') && preference('subscription_downgrade') && $subscription?->package?->sale_price[$subscription?->billing_cycle] >= $package['sale_price'][$billing_cycle])
-                                        <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Downgrade Plan') }}</button>
-                                    @endif --}}
+                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Start :x Days Trial', ['x' => $package['trial_day']]) }}</button>
+                                        @elseif (!$subscription?->package?->id)
+                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Subscribe Now') }}</button>
+                                        @elseif ($subscription?->package?->id == $package['id'] && $billing_cycle == $subscription?->billing_cycle)
+                                            @if ($subscription?->package?->renewable)
+                                                <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3">{{ __('Renew Plan') }}</button>
+                                            @endif
+                                        @elseif (preference('subscription_change_plan') && $subscription?->package?->sale_price[$subscription?->billing_cycle] < $package['sale_price'][$billing_cycle])
+                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Upgrade Plan') }}</button>
+                                        @elseif (preference('subscription_change_plan') && preference('subscription_downgrade') && $subscription?->package?->sale_price[$subscription?->billing_cycle] >= $package['sale_price'][$billing_cycle])
+                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Downgrade Plan') }}</button>
+                                        @endif --}}
                                         </form>
 
                                         @php
