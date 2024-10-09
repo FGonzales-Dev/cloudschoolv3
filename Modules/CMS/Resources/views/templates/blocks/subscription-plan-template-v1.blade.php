@@ -214,7 +214,7 @@
                                                 class="text-18">/{{ ($billing_cycle == 'days' ? $package['duration'] . ' ' : '') . ucfirst($billing_cycle) }}</span>
                                         </p>
 
-                                        @if (preference('apply_coupon_subscription'))
+                                        {{-- @if (preference('apply_coupon_subscription'))
                                             <form action="{{ route('user.subscription.checkout') }}" method="GET"
                                                 class="button-need-disable">
                                             @else
@@ -226,20 +226,30 @@
                                         <input type="hidden" name="sending_url"
                                             value="{{ techEncrypt(route('user.subscription.store')) }}">
                                         <input type="hidden" name="billing_cycle" value="{{ $billing_cycle }}">
-                                        {{-- @if (auth()->user() && $package['trial_day'] && !subscription('isUsedTrial', $package['id']))
-                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Start :x Days Trial', ['x' => $package['trial_day']]) }}</button>
+                                        @if (auth()->user() && $package['trial_day'] && !subscription('isUsedTrial', $package['id']))
+                                            <button type="submit"
+                                                class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3">{{ __('Start :x Days Trial', ['x' => $package['trial_day']]) }}</button>
                                         @elseif (!$subscription?->package?->id)
-                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Subscribe Now') }}</button>
+                                            <button type="submit"
+                                                class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3">{{ __('Subscribe Now') }}</button>
                                         @elseif ($subscription?->package?->id == $package['id'] && $billing_cycle == $subscription?->billing_cycle)
                                             @if ($subscription?->package?->renewable)
-                                                <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3">{{ __('Renew Plan') }}</button>
+                                                <button type="submit"
+                                                    class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3">{{ __('Renew Plan') }}</button>
                                             @endif
-                                        @elseif (preference('subscription_change_plan') && $subscription?->package?->sale_price[$subscription?->billing_cycle] < $package['sale_price'][$billing_cycle])
-                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Upgrade Plan') }}</button>
-                                        @elseif (preference('subscription_change_plan') && preference('subscription_downgrade') && $subscription?->package?->sale_price[$subscription?->billing_cycle] >= $package['sale_price'][$billing_cycle])
-                                            <button type="submit" class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3" >{{ __('Downgrade Plan') }}</button>
-                                        @endif --}}
-                                        </form>
+                                        @elseif (preference('subscription_change_plan') &&
+                                                $subscription?->package?->sale_price[$subscription?->billing_cycle] < $package['sale_price'][$billing_cycle]
+                                        )
+                                            <button type="submit"
+                                                class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3">{{ __('Upgrade Plan') }}</button>
+                                        @elseif (preference('subscription_change_plan') &&
+                                                preference('subscription_downgrade') &&
+                                                $subscription?->package?->sale_price[$subscription?->billing_cycle] >= $package['sale_price'][$billing_cycle]
+                                        )
+                                            <button type="submit"
+                                                class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3">{{ __('Downgrade Plan') }}</button>
+                                        @endif
+                                        </form> --}}
 
                                         @php
 
@@ -299,6 +309,19 @@
 
                                     </div>
 
+
+                                    @if (preference('apply_coupon_subscription'))
+                                        <form action="{{ route('user.subscription.checkout') }}" method="GET"
+                                            class="button-need-disable">
+                                        @else
+                                            <form action="{{ route('user.subscription.store') }}" method="POST"
+                                                class="button-need-disable">
+                                                @csrf
+                                    @endif
+                                    <input type="hidden" name="package_id" value="{{ $package['id'] }}">
+                                    <input type="hidden" name="sending_url"
+                                        value="{{ techEncrypt(route('user.subscription.store')) }}">
+                                    <input type="hidden" name="billing_cycle" value="{{ $billing_cycle }}">
                                     @if (auth()->user() && $package['trial_day'] && !subscription('isUsedTrial', $package['id']))
                                         <button type="submit"
                                             class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3">{{ __('Start :x Days Trial', ['x' => $package['trial_day']]) }}</button>
@@ -323,6 +346,8 @@
                                         <button type="submit"
                                             class="{{ $package['button'] . ' ' . $buttonColor }} plan-loader flex gap-3 w-full justify-center text-center  border border-[#808080] rounded-[12px] ">{{ __('Downgrade Plan') }}</button>
                                     @endif
+                                    </form>
+
                                 </div>
                             </div>
                         @endforeach
