@@ -6,7 +6,7 @@ tinymce.init({
   menubar: false,
   promotion: false,
   contextmenu: false,
-  content_style: "body{color:#898989}",
+  content_style: "body{color:#F90000FF}",
   toolbar: false,
   plugins: [
     'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
