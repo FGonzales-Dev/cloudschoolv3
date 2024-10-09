@@ -6,7 +6,7 @@ tinymce.init({
   menubar: false,
   promotion: false,
   contextmenu: false,
-  content_style: "body{color:#2B00FFFF}",
+  content_style: "body{color:#2B00FFFF}",  // Set text color
   toolbar: false,
   plugins: [
     "advlist",
@@ -27,8 +27,10 @@ tinymce.init({
   ],
   toolbar: "bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | undo redo | blocks forecolor | removeformat | ",
   content_css: "../../Modules/OpenAI/Resources/assets/css/rtl.min.css",
+
   init_instance_callback: function (editor) {
     var lang = document.documentElement.getAttribute("lang");
+
 
     function applyTextAlignmentBasedOnLanguage() {
       if (lang === "ar") {
@@ -38,20 +40,27 @@ tinymce.init({
       }
     }
 
+
     function makeBoldWords(content) {
       return content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     }
 
 
+    function autoBoldContent() {
+      let content = editor.getContent();
+      let updatedContent = makeBoldWords(content);
 
-    editor.on('input', function () {
-      const content = editor.getContent();
-      const updatedContent = makeBoldWords(content);
+
       if (content !== updatedContent) {
         editor.setContent(updatedContent);
         editor.selection.select(editor.getBody(), true);
         editor.selection.collapse(false);
       }
+    }
+
+
+    editor.on('init', function () {
+      autoBoldContent();
     });
 
     applyTextAlignmentBasedOnLanguage();
