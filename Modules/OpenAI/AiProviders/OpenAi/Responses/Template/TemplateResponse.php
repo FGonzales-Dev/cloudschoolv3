@@ -67,9 +67,6 @@ class TemplateResponse implements TemplateResponseContract
     public function content(): string
     {
         $content = $this->response['choices'][0]['message']['content'];
-        $content = preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $content);
-    
-        // Set and return the modified content
         return $this->content = $content;
     }
 
