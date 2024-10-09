@@ -115,12 +115,11 @@
 
                 </div>
                 <textarea id="basic-example" class="hidden">
-                  <h1> Testing </h1>
                     {!! !empty($useCase->content)
-                        ? nl2br(preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $useCase->content))
+                        ? nl2br(preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', htmlspecialchars($useCase->content)))
                         : '' !!}
-   
-            </textarea>
+                </textarea>
+
             </div>
         </div>
     </div>
