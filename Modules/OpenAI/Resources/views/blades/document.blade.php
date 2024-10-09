@@ -116,7 +116,9 @@
                 </div>
                 <textarea id="basic-example" class="hidden">
                   
-                {{ !empty($useCase->content) ? $useCase->content : '' }}
+                    {!! !empty($useCase->content)
+                        ? nl2br(preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $useCase->content))
+                        : '' !!}
    
             </textarea>
             </div>
@@ -125,14 +127,14 @@
     {{-- end main content --}}
 @endsection
 @section('js')
-    <script>
+    {{-- <script>
         function formatBold(content) {
             return content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         }
         const rawContent = document.getElementById('basic-example').value;
         const formattedContent = formatBold(rawContent);
         document.getElementById('formatted-content').innerHTML = formattedContent;
-    </script>
+    </script> --}}
     <script src="{{ asset('public/assets/plugin/tinymce 6.3.1/js/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('Modules/OpenAI/Resources/assets/js/tiny_mce.min.js') }}"></script>
     <script>
