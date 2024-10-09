@@ -117,9 +117,7 @@
                 <textarea id="basic-example" class="hidden">
                     Testing
                     {!! nl2br(preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', 'Test1 **Slide 1:** Test1')) !!}
-                    {!! !empty($useCase->content)
-                        ? nl2br(preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', htmlspecialchars($useCase->content)))
-                        : '' !!}
+                    {{ !empty($useCase->content) ? $useCase->content : '' }}
                 </textarea>
 
             </div>
