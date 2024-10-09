@@ -1,18 +1,23 @@
 @extends('layouts.user_master')
 @section('page_title', __('Templates'))
 @section('content')
+
+
     {{-- main-content --}}
     <div
         class="w-[68.9%] 5xl:w-[85.9%] dark:bg-[#292929] flex flex-col flex-1 border-l dark:border-[#474746] border-color-DF h-screen border-right">
+
         <div
             class="subscription-main flex xl:flex-row flex-col xl:h-full md:overflow-auto sidebar-scrollbar md:h-screen overflow-x-hidden">
             <div
                 class="bg-[#F6F3F2] dark:bg-[#3A3A39] xl:w-[401px] 5xl:w-[474px] sidebar-scrollbar xl:overflow-auto xl:h-screen pt-14">
                 @include('openai::user.includes.sidebar')
             </div>
+
             <div class="grow xl:pt-[74px] pt-5 dark:bg-[#292929] xl:overflow-auto sidebar-scrollbar h-screen xl:w-1/2">
                 <div class="flex justify-between items-center lg:mx-6 mb-4 xl:px-0 px-5 gap-5">
                     <div>
+
                         <div
                             class="flex gap-1.5 leading-[22px] items-center font-medium text-color-2C dark:text-white text-[15px] edit-url">
                             <a href="{{ route('openai') }}">
@@ -114,26 +119,34 @@
                     </div>
 
                 </div>
+
+
+
                 <textarea id="basic-example" class="hidden">
-                    Testing v2
-                    {!! nl2br(preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', 'Test1 **Slide 1:** Test1')) !!}
                     {{ !empty($useCase->content) ? $useCase->content : '' }}
+                    <div id="formatted-content">
+                 
+                        <h1> test</h1>
+                    </div>
                 </textarea>
 
             </div>
+
         </div>
+
+
     </div>
     {{-- end main content --}}
 @endsection
 @section('js')
-    {{-- <script>
+    <script>
         function formatBold(content) {
             return content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         }
         const rawContent = document.getElementById('basic-example').value;
         const formattedContent = formatBold(rawContent);
         document.getElementById('formatted-content').innerHTML = formattedContent;
-    </script> --}}
+    </script>
     <script src="{{ asset('public/assets/plugin/tinymce 6.3.1/js/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('Modules/OpenAI/Resources/assets/js/tiny_mce.min.js') }}"></script>
     <script>
