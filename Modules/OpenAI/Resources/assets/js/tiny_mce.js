@@ -1,38 +1,58 @@
 "use strict";
 
 tinymce.init({
-  selector: 'textarea#basic-example',
+  selector: "textarea#basic-example",
   statusbar: false,
   menubar: false,
   promotion: false,
   contextmenu: false,
-  content_style: "body{color:#F90000FF}",
+  content_style: "body{color:#2B00FFFF}",
   toolbar: false,
   plugins: [
-    'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
-    'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-    'insertdatetime', 'media', 'table'
+    "advlist",
+    "autolink",
+    "lists",
+    "link",
+    "image",
+    "charmap",
+    "preview",
+    "anchor",
+    "searchreplace",
+    "visualblocks",
+    "code",
+    "fullscreen",
+    "insertdatetime",
+    "media",
+    "table"
   ],
-  toolbar: 'bold italic backcolor | alignleft aligncenter ' + 'alignright alignjustify | bullist numlist outdent indent | ' + 'undo redo | blocks forecolor | ' +
-    'removeformat | ',
-  content_css: '../../Modules/OpenAI/Resources/assets/css/rtl.min.css',
+  toolbar: "bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | undo redo | blocks forecolor | removeformat | ",
+  content_css: "../../Modules/OpenAI/Resources/assets/css/rtl.min.css",
   init_instance_callback: function (editor) {
     var lang = document.documentElement.getAttribute("lang");
+
     function applyTextAlignmentBasedOnLanguage() {
-      if (lang == "ar") {
+      if (lang === "ar") {
         editor.setContent(`<p class="rtl-text">${editor.getContent()}</p>`);
+      } else {
+        editor.setContent(editor.getContent().replace(/<div class="rtl-text">|<\/div>/g, ""));
       }
-      else {
-        editor.setContent(editor.getContent().replace(/<div class="rtl-text">|<\/div>/g, ''));
-      }
-    }
-    function makeBoldWords() {
-      let content = editor.getContent();
-      content = content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      editor.setContent(content);
     }
 
+    function makeBoldWords(content) {
+      return content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    }
+
+
+    editor.on('change', function () {
+      const content = editor.getContent();
+      const updatedContent = makeBoldWords(content);
+      if (content !== updatedContent) {
+        editor.setContent(updatedContent);
+        editor.selection.select(editor.getBody(), true);
+        editor.selection.collapse(false);
+      }
+    });
+
     applyTextAlignmentBasedOnLanguage();
-    makeBoldWords();
   }
 });
