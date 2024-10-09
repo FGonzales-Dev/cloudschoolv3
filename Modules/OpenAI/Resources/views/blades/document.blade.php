@@ -23,10 +23,8 @@
                                         fill="currentColor" />
                                 </svg>
                             </a>
-                            <h1> Test 1 to delete </h1>
                             <p class="content-name px-3 line-clamp-single break-all">
                                 {{ __('Content of a :x', ['x' => trimWords($slug, 120) ?? '']) }}</p>
-                            <h1> Test 2 to delete </h1>
                         </div>
                     </div>
                     <div class="flex justify-end 2xl:gap-10 gap-3">
@@ -117,7 +115,9 @@
 
                 </div>
                 <textarea id="basic-example" class="hidden">
+                    <h1> Test 1 to delete </h1>
                 {{ !empty($useCase->content) ? $useCase->content : '' }}
+                <h1> Test 2 to delete </h1>
             </textarea>
             </div>
         </div>
