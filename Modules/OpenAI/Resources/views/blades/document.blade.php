@@ -115,9 +115,9 @@
 
                 </div>
                 <textarea id="basic-example" class="hidden">
-                    <h1> Test 1 to delete </h1>
+                  
                 {{ !empty($useCase->content) ? $useCase->content : '' }}
-                <h1> Test 2 to delete </h1>
+   
             </textarea>
             </div>
         </div>
@@ -125,6 +125,14 @@
     {{-- end main content --}}
 @endsection
 @section('js')
+    <script>
+        function formatBold(content) {
+            return content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        }
+        const rawContent = document.getElementById('basic-example').value;
+        const formattedContent = formatBold(rawContent);
+        document.getElementById('formatted-content').innerHTML = formattedContent;
+    </script>
     <script src="{{ asset('public/assets/plugin/tinymce 6.3.1/js/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('Modules/OpenAI/Resources/assets/js/tiny_mce.min.js') }}"></script>
     <script>
