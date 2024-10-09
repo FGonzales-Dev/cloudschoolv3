@@ -43,7 +43,8 @@ tinymce.init({
     }
 
 
-    editor.on('change', function () {
+
+    editor.on('input', function () {
       const content = editor.getContent();
       const updatedContent = makeBoldWords(content);
       if (content !== updatedContent) {
