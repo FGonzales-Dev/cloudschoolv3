@@ -109,13 +109,13 @@ $(document).on("submit", "#openai-form", function (e) {
                         let stream = e.data;
                         if (stream && stream !== "[DONE]") {
 
-                            let currentContent = tinyMCE.activeEditor.getContent({ format: 'html' });
-                            let newContent = currentContent + stream;
-                            tinyMCE.activeEditor.setContent(newContent);
+                            // let currentContent = tinyMCE.activeEditor.getContent({ format: 'html' });
+                            // let newContent = currentContent + stream;
+                            // tinyMCE.activeEditor.setContent(newContent);
 
 
-                            // gethtml += stream;
-                            // tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
+                            gethtml += stream;
+                            tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
                         }
                     }
                 };
