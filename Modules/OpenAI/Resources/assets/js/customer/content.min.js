@@ -130,7 +130,7 @@ loadScript('https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js', 
                             let stream = e.data;
                             if (stream && stream !== "[DONE]") {
                                 console.log(stream);
-                                gethtml += marked(stream);
+                                gethtml += stream;
                                 tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
                             }
                         }
