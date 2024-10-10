@@ -6,7 +6,7 @@ tinymce.init({
   menubar: false,
   promotion: false,
   contextmenu: false,
-  content_style: "body{color:#898989}",  // Set text color
+  content_style: "body{color:#4E4E4EFF}",  // Set text color
   toolbar: false,
   plugins: [
     "advlist",
