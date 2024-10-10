@@ -129,17 +129,8 @@ loadScript('https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js', 
                         } else {
                             let stream = e.data;
                             if (stream && stream !== "[DONE]") {
+                                console.log(stream);
                                 gethtml += marked(stream);
-                                console.log(gethtml);
-
-                                let markdownString = "**bold text** and *italic text*";
-
-                                // Convert markdown to HTML
-                                let htmlContent = marked(markdownString);
-
-                                // Log the HTML output
-                                console.log("HTML output:", htmlContent);
-
                                 tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
                             }
                         }
