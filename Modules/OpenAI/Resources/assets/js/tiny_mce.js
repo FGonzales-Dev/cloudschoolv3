@@ -26,7 +26,9 @@ tinymce.init({
     "table",
     "text_patterns",
     "textpattern"
-  ],
+  ], external_plugins: {
+    'textpattern': 'https://cdn.tiny.cloud/1/35kjfbxdcfio2sso6wzj2kootbw0lgafxf1e6kit2m1f06tl/tinymce/6/plugins/textpattern/plugin.min.js'
+  },
   textpattern_patterns: [
     { start: '**', end: '**', format: 'bold' },],
 
