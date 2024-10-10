@@ -1,54 +1,3 @@
-// Function to dynamically load the marked library with retries
-function loadMarkedLibrary(callback, retries = 3) {
-    if (typeof marked === 'undefined') {
-        var script = document.createElement('script');
-        script.src = "https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js";
-        script.onload = function () {
-            console.log("marked.js loaded successfully");
-            if (typeof marked !== 'undefined') {
-                console.log("marked.js is available now.");
-                callback();  // Execute the callback only if 'marked' is loaded
-            } else {
-                console.error("marked is still not available after loading.");
-            }
-        };
-        script.onerror = function () {
-            if (retries > 0) {
-                console.error("Error loading marked.js. Retrying... Attempts left:", retries);
-                loadMarkedLibrary(callback, retries - 1);  // Retry loading if it fails
-            } else {
-                console.error("Failed to load marked.js after multiple attempts.");
-            }
-        };
-        document.head.appendChild(script);
-    } else {
-        console.log("marked.js is already loaded.");
-        callback();  // If already loaded, directly call the callback
-    }
-}
-
-// Function to parse markdown and set content to TinyMCE
-function parseMarkdownAndSetToTinyMCE(stream) {
-    if (typeof marked === 'undefined') {
-        console.error("marked.js is not loaded or not available at the moment.");
-        return;  // Safeguard if 'marked' isn't available yet
-    }
-
-    // Check if stream has valid content
-    if (stream && stream !== "[DONE]") {
-        console.log(stream);
-
-        // Convert markdown to HTML using marked.js
-        let html = marked.parse(stream);
-
-        // Update the global gethtml with the converted content
-        gethtml += html;
-
-        // Pass the resulting HTML to TinyMCE
-        tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
-    }
-}
-
 function hideProviderOptions() {
     $(".ProviderOptions").each(function () {
         $(this).addClass("hidden");
@@ -131,7 +80,7 @@ $(document).on("submit", "#openai-form", function (e) {
             _token: CSRF_TOKEN
         },
         success: function (response) {
-            if (response.status == "success") {
+            if (response.status = "success") {
                 var url = newUrl + "?questions=" + encodeURIComponent(questions) +
                     "&provider=" + $("#provider").val() +
                     "&useCase=" + $(".use-cases").val() +
@@ -159,11 +108,8 @@ $(document).on("submit", "#openai-form", function (e) {
                     } else {
                         let stream = e.data;
                         if (stream && stream !== "[DONE]") {
-
-                            loadMarkedLibrary(function () {
-                                parseMarkdownAndSetToTinyMCE(stream);
-                            });
-
+                            gethtml += stream;
+                            tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
                         }
                     }
                 };
