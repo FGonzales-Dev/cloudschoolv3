@@ -24,8 +24,9 @@ tinymce.init({
     "insertdatetime",
     "media",
     "table",
-  ],
-  plugins: 'textpattern',
+  ], external_plugins: {
+    'textpattern': 'https://cdn.tiny.cloud/1/no-api-key/tinymce/6/plugins/textpattern/plugin.min.js'
+  },
   textpattern_patterns: [
     { start: '**', end: '**', format: 'bold' },],
   toolbar: "bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | undo redo | blocks forecolor | removeformat | ",
