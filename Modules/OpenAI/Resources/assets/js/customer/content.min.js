@@ -10,7 +10,7 @@ function loadScript(url, callback) {
     document.head.appendChild(script);
 }
 
-loadScript('./marked.min.js', function () {
+loadScript('https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js', function () {
     function hideProviderOptions() {
         $(".ProviderOptions").each(function () {
             $(this).addClass("hidden");
