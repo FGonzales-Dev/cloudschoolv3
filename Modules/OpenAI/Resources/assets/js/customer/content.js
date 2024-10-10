@@ -102,27 +102,15 @@ $(document).on("submit", "#openai-form", function (e) {
                         });
                         $(".loader").addClass("hidden");
                         $("#magic-submit-button").removeAttr("disabled");
-
-                        var stream = e.data;
-                        console.log("test1")
-                        console.log(stream)
-                        console.log("test1")
-
                     } else if (e.data == "[ERROR]") {
                         eventSource.close();
                         errorMessage(e.data, "magic-submit-button");
                     } else {
                         let stream = e.data;
                         if (stream && stream !== "[DONE]") {
-                            console.log("test2")
-                            console.log(stream)
-                            console.log("test2")
-                            // let currentContent = tinyMCE.activeEditor.getContent({ format: 'html' });
-                            // let newContent = currentContent + stream;
-                            // tinyMCE.activeEditor.setContent(newContent);
-
                             gethtml += stream;
                             gethtml += marked(stream);
+                            console.log(gethtml);
                             tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
                         }
                     }
