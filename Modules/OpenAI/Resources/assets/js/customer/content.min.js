@@ -106,10 +106,41 @@ $(document).on("submit", "#openai-form", function (e) {
                         eventSource.close();
                         errorMessage(e.data, "magic-submit-button");
                     } else {
+                        function convertMarkdown(content) {
+                            // Apply formatting
+                            content = makeBold(content);
+                            content = makeItalic(content);
+                            content = makeHeadings(content);
+                            return content;
+                        }
+
+                        // Function to make text bold
+                        function makeBold(content) {
+                            return content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                        }
+
+                        // Function to make text italic
+                        function makeItalic(content) {
+                            return content.replace(/\*(.*?)\*/g, '<em>$1</em>');
+                        }
+
+                        // Function to convert headings
+                        function makeHeadings(content) {
+                            content = content.replace(/###### (.*)/g, '<h6>$1</h6>');
+                            content = content.replace(/##### (.*)/g, '<h5>$1</h5>');
+                            content = content.replace(/#### (.*)/g, '<h4>$1</h4>');
+                            content = content.replace(/### (.*)/g, '<h3>$1</h3>');
+                            content = content.replace(/## (.*)/g, '<h2>$1</h2>');
+                            content = content.replace(/# (.*)/g, '<h1>$1</h1>');
+                            return content;
+                        }
+
                         let stream = e.data;
                         if (stream && stream !== "[DONE]") {
-                            gethtml += stream;
-                            tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
+
+                            // Convert markdown to HTML
+                            let convertedHtml = convertMarkdown(gethtml);
+                            tinyMCE.activeEditor.setContent(convertedHtml, { format: "html" });
                         }
                     }
                 };
