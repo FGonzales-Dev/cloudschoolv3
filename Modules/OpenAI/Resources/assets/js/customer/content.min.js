@@ -11,6 +11,14 @@ function loadScript(url, callback) {
 }
 
 loadScript('https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js', function () {
+    console.log("Loaded marked.min.js successfully!");
+
+
+    if (typeof marked === 'undefined') {
+        console.error("Marked is not defined!");
+    } else {
+        console.log("Marked is available for use.");
+    }
     function hideProviderOptions() {
         $(".ProviderOptions").each(function () {
             $(this).addClass("hidden");
@@ -123,6 +131,15 @@ loadScript('https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js', 
                             if (stream && stream !== "[DONE]") {
                                 gethtml += marked(stream);
                                 console.log(gethtml);
+
+                                let markdownString = "**bold text** and *italic text*";
+
+                                // Convert markdown to HTML
+                                let htmlContent = marked(markdownString);
+
+                                // Log the HTML output
+                                console.log("HTML output:", htmlContent);
+
                                 tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
                             }
                         }
