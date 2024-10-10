@@ -121,8 +121,8 @@ $(document).on("submit", "#openai-form", function (e) {
                             // let newContent = currentContent + stream;
                             // tinyMCE.activeEditor.setContent(newContent);
 
-
                             gethtml += stream;
+                            gethtml += marked(stream);
                             tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
                         }
                     }
