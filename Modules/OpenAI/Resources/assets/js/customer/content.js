@@ -1,41 +1,46 @@
-function loadMarkedLibrary() {
-    return new Promise(function (resolve, reject) {
-        var script = document.createElement('script');
-        script.src = "https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js";
-        script.onload = function () {
-            console.log("marked.js has been loaded successfully");
-            if (typeof marked !== 'undefined') {
-                resolve();  // Resolve the promise if marked is loaded
-            } else {
-                reject(new Error("marked.js is not available after loading."));
-            }
-        };
-        script.onerror = function () {
-            reject(new Error("Error loading marked.js"));
-        };
-        document.head.appendChild(script);
-    });
+// Function to dynamically load the marked library with retries
+function loadMarkedLibrary(callback, retries = 3) {
+    var script = document.createElement('script');
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js";
+    script.onload = function () {
+        console.log("marked.js loaded successfully");  // Debugging log to confirm loading
+        if (typeof marked !== 'undefined') {
+            console.log("marked.js is available now.");
+            callback();  // Execute the callback only if 'marked' is loaded
+        } else {
+            console.error("marked is still not available after loading.");
+        }
+    };
+    script.onerror = function () {
+        if (retries > 0) {
+            console.error("Error loading marked.js. Retrying... Attempts left:", retries);
+            loadMarkedLibrary(callback, retries - 1);  // Retry loading if it fails
+        } else {
+            console.error("Failed to load marked.js after multiple attempts.");
+        }
+    };
+    document.head.appendChild(script);
 }
 
 // Function to parse markdown and set content to TinyMCE
 function parseMarkdownAndSetToTinyMCE(stream) {
+    if (typeof marked === 'undefined') {
+        console.error("marked.js is not loaded or not available at the moment.");
+        return;  // Safeguard if 'marked' isn't available yet
+    }
+
     // Check if stream has valid content
     if (stream && stream !== "[DONE]") {
         console.log(stream);
 
-        // Ensure 'marked' is available before using it
-        if (typeof marked !== 'undefined') {
-            // Convert markdown to HTML using marked.js
-            let html = marked.parse(stream);
+        // Convert markdown to HTML using marked.js
+        let html = marked.parse(stream);
 
-            // Update the global gethtml with the converted content
-            gethtml += html;
+        // Update the global gethtml with the converted content
+        gethtml += html;
 
-            // Pass the resulting HTML to TinyMCE
-            tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
-        } else {
-            console.error("marked is not available in parseMarkdownAndSetToTinyMCE.");
-        }
+        // Pass the resulting HTML to TinyMCE
+        tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
     }
 }
 
@@ -149,9 +154,11 @@ $(document).on("submit", "#openai-form", function (e) {
                     } else {
                         let stream = e.data;
                         if (stream && stream !== "[DONE]") {
-                            console.log(stream)
-                            gethtml += parseMarkdownAndSetToTinyMCE(stream);
-                            tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
+
+                            parseMarkdownAndSetToTinyMCE(stream);
+
+                            // gethtml += stream;
+                            // tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
                         }
                     }
                 };
