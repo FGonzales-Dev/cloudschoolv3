@@ -1,3 +1,27 @@
+function loadMarkedLibrary(callback) {
+    var script = document.createElement('script');
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js";
+    script.onload = callback;
+    document.head.appendChild(script);
+}
+
+// Function to parse markdown and set content to TinyMCE
+function parseMarkdownAndSetToTinyMCE(stream) {
+    // Check if stream has valid content
+    if (stream && stream !== "[DONE]") {
+        console.log(stream);
+
+        // Convert markdown to HTML using marked.js
+        let html = marked.parse(stream);
+
+        // Update the global gethtml with the converted content
+        gethtml += html;
+
+        // Pass the resulting HTML to TinyMCE
+        tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
+    }
+}
+
 function hideProviderOptions() {
     $(".ProviderOptions").each(function () {
         $(this).addClass("hidden");
@@ -109,7 +133,7 @@ $(document).on("submit", "#openai-form", function (e) {
                         let stream = e.data;
                         if (stream && stream !== "[DONE]") {
                             console.log(stream)
-                            gethtml += stream;
+                            gethtml += parseMarkdownAndSetToTinyMCE(stream);
                             tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
                         }
                     }
