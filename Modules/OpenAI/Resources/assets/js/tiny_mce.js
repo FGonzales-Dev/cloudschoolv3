@@ -31,24 +31,39 @@ tinymce.init({
   init_instance_callback: function (editor) {
     var lang = document.documentElement.getAttribute("lang");
 
-
     function applyTextAlignmentBasedOnLanguage() {
       let currentContent = editor.getContent();
 
-
+      // Convert Markdown to HTML
       let htmlContent = marked(currentContent);
+
+      // Apply text alignment based on language
       if (lang === "ar") {
-        editor.setContent(`<p class="rtl-text">${editor.getContent()}</p>`);
+        // Set content with RTL class for Arabic
+        editor.setContent(`<div class="rtl-text">${htmlContent}</div>`);
       } else {
+        // Remove any existing RTL wrapping
         editor.setContent(htmlContent.replace(/<div class="rtl-text">|<\/div>/g, ""));
       }
     }
 
+    // Call the function to apply the content based on language
     applyTextAlignmentBasedOnLanguage();
   },
+
   formats: {
     bold: { inline: 'strong' }
   },
 
   convert_fonts_to_spans: true
 });
+
+// Example usage to set initial content
+let markdownStream = `
+## Title
+**This is bold text**
+- Bullet point 1
+- Bullet point 2
+`;
+
+tinymce.get("basic-example").setContent(markdownStream); // Set initial Markdown content
