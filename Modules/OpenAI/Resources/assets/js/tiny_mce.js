@@ -24,8 +24,10 @@ tinymce.init({
     "insertdatetime",
     "media",
     "table",
-    "code markdown"
   ],
+  plugins: 'textpattern',
+  textpattern_patterns: [
+    { start: '**', end: '**', format: 'bold' },],
   toolbar: "bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | undo redo | blocks forecolor | removeformat | ",
   content_css: "../../Modules/OpenAI/Resources/assets/css/rtl.min.css",
 
