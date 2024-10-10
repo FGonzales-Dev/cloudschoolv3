@@ -51,26 +51,19 @@ function initTinyMCE() {
     content_css: "../../Modules/OpenAI/Resources/assets/css/rtl.min.css",
 
     init_instance_callback: function (editor) {
-      var lang = document.documentElement.getAttribute("lang");
+      // Set the initial Markdown content after TinyMCE has initialized
+      let markdownStream = `
+                ## Title
+                **This is bold text**
+                - Bullet point 1
+                - Bullet point 2
+            `;
 
-      function applyTextAlignmentBasedOnLanguage() {
-        let currentContent = editor.getContent();
+      // Convert the Markdown to HTML using marked
+      let htmlContent = marked(markdownStream);
 
-        // Convert Markdown to HTML using marked
-        let htmlContent = marked(currentContent);
-
-        // Apply text alignment based on language
-        if (lang === "ar") {
-          // Set content with RTL class for Arabic
-          editor.setContent(`<div class="rtl-text">${htmlContent}</div>`);
-        } else {
-          // Remove any existing RTL wrapping
-          editor.setContent(htmlContent.replace(/<div class="rtl-text">|<\/div>/g, ""));
-        }
-      }
-
-      // Call the function to apply the content based on language
-      applyTextAlignmentBasedOnLanguage();
+      // Set the converted HTML content in the editor
+      editor.setContent(htmlContent);
     },
 
     formats: {
@@ -79,14 +72,4 @@ function initTinyMCE() {
 
     convert_fonts_to_spans: true
   });
-
-  // Example usage to set initial content
-  let markdownStream = `
-  ## Title
-  **This is bold text**
-  - Bullet point 1
-  - Bullet point 2
-  `;
-
-  tinymce.get("basic-example").setContent(markdownStream); // Set initial Markdown content
 }
