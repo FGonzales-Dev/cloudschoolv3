@@ -116,8 +116,8 @@ $(document).on("submit", "#openai-form", function (e) {
                             // tinyMCE.activeEditor.setContent(newContent);
 
 
-                            gethtml += stream;
-                            tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
+                            // gethtml += stream;
+                            // tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
                         }
                     }
                 };
