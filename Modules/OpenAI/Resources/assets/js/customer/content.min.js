@@ -1,9 +1,20 @@
-// Function to dynamically load the marked library
-function loadMarkedLibrary(callback) {
-    var script = document.createElement('script');
-    script.src = "https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js";
-    script.onload = callback;
-    document.head.appendChild(script);
+function loadMarkedLibrary() {
+    return new Promise(function (resolve, reject) {
+        var script = document.createElement('script');
+        script.src = "https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js";
+        script.onload = function () {
+            console.log("marked.js has been loaded successfully");
+            if (typeof marked !== 'undefined') {
+                resolve();  // Resolve the promise if marked is loaded
+            } else {
+                reject(new Error("marked.js is not available after loading."));
+            }
+        };
+        script.onerror = function () {
+            reject(new Error("Error loading marked.js"));
+        };
+        document.head.appendChild(script);
+    });
 }
 
 // Function to parse markdown and set content to TinyMCE
@@ -23,7 +34,7 @@ function parseMarkdownAndSetToTinyMCE(stream) {
             // Pass the resulting HTML to TinyMCE
             tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
         } else {
-            console.error("marked is not available");
+            console.error("marked is not available in parseMarkdownAndSetToTinyMCE.");
         }
     }
 }
