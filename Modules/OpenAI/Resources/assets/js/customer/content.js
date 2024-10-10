@@ -139,7 +139,7 @@ $(document).on("submit", "#openai-form", function (e) {
                         if (stream && stream !== "[DONE]") {
                             gethtml += stream;
                             let convertedHtml = convertMarkdown(gethtml);
-                            tinyMCE.activeEditor.setContent(convertedHtml, { format: "html" });
+                            tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
                         }
                     }
                 };
