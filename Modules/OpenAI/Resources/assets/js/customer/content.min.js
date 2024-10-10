@@ -1,3 +1,4 @@
+// Function to dynamically load the marked library
 function loadMarkedLibrary(callback) {
     var script = document.createElement('script');
     script.src = "https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js";
@@ -11,14 +12,19 @@ function parseMarkdownAndSetToTinyMCE(stream) {
     if (stream && stream !== "[DONE]") {
         console.log(stream);
 
-        // Convert markdown to HTML using marked.js
-        let html = marked.parse(stream);
+        // Ensure 'marked' is available before using it
+        if (typeof marked !== 'undefined') {
+            // Convert markdown to HTML using marked.js
+            let html = marked.parse(stream);
 
-        // Update the global gethtml with the converted content
-        gethtml += html;
+            // Update the global gethtml with the converted content
+            gethtml += html;
 
-        // Pass the resulting HTML to TinyMCE
-        tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
+            // Pass the resulting HTML to TinyMCE
+            tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
+        } else {
+            console.error("marked is not available");
+        }
     }
 }
 
