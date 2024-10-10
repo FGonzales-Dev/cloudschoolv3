@@ -24,6 +24,7 @@ tinymce.init({
     "insertdatetime",
     "media",
     "table",
+    "text_patterns"
   ],
   textpattern_patterns: [
     { start: '**', end: '**', format: 'bold' },],
