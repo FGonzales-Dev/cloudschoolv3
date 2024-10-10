@@ -121,9 +121,9 @@ loadScript('https://cdnjs.cloudflare.com/ajax/libs/marked/2.1.3/marked.min.js', 
                         } else {
                             let stream = e.data;
                             if (stream && stream !== "[DONE]") {
-                                gethtml += stream;
+                                gethtml += marked(stream);
                                 console.log(gethtml);
-                                tinyMCE.activeEditor.setContent(marked(gethtml), { format: "html" });
+                                tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
                             }
                         }
                     };
