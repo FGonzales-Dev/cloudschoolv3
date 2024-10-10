@@ -109,13 +109,6 @@ $(document).on("submit", "#openai-form", function (e) {
                         let stream = e.data;
                         if (stream && stream !== "[DONE]") {
                             gethtml += stream;
-                            // console.log(gethtml);
-                            // function makeBold(content) {
-                            //     return content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                            // }
-
-                            // // Apply the bold formatting
-                            // let formattedHtml = makeBold(gethtml);
                             tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
                         }
                     }

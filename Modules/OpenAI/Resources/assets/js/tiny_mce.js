@@ -6,7 +6,7 @@ tinymce.init({
   menubar: false,
   promotion: false,
   contextmenu: false,
-  content_style: "body{color:#A52A8CFF}",  // Set text color
+  content_style: "body{color:#898989}",  // Set text color
   toolbar: false,
   plugins: [
     "advlist",
@@ -41,35 +41,11 @@ tinymce.init({
       }
     }
 
-
-    // function makeBoldWords(content) {
-    //   return content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    // }
-
-
-    // function autoBoldContent() {
-    //   let content = editor.getContent();
-    //   let updatedContent = makeBoldWords(content);
-
-
-    //   if (content !== updatedContent) {
-    //     editor.setContent(updatedContent);
-    //     editor.selection.select(editor.getBody(), true);
-    //     editor.selection.collapse(false);
-    //   }
-    // }
-
-
-    // editor.on('init', function () {
-    //   autoBoldContent();
-    // });
-
     applyTextAlignmentBasedOnLanguage();
   },
   formats: {
     bold: { inline: 'strong' }
   },
-
 
   convert_fonts_to_spans: true
 });
