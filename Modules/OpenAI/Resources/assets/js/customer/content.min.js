@@ -103,12 +103,11 @@ $(document).on("submit", "#openai-form", function (e) {
                         $(".loader").addClass("hidden");
                         $("#magic-submit-button").removeAttr("disabled");
 
-                        let stream = e.data;
+                        var stream = e.data;
                         console.log("test1")
                         console.log(stream)
                         console.log("test1")
-                        gethtml += stream;
-                        tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
+
                     } else if (e.data == "[ERROR]") {
                         eventSource.close();
                         errorMessage(e.data, "magic-submit-button");
