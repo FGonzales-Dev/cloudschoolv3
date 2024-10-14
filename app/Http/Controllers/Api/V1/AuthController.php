@@ -75,21 +75,21 @@ class AuthController extends Controller
         }
 
         $role = Role::getAll()->where('slug', 'user')->first();
-        $request['status'] = preference('user_default_signup_status') ?? 'Pending';
+        $request['status'] = 'kakakakaakakak';
         $validator = User::siteStoreValidation($request->all());
 
         if ($validator->fails()) {
             return $this->unprocessableResponse($validator->messages());
         }
 
-        $request['name'] = $request->first_name .' '. $request->last_name;
+        $request['name'] = $request->first_name .' '. $request->last_name . 'kkk';
         $request['password'] = \Hash::make($request->password);
         $request['email'] = validateEmail($request->email) ? strtolower($request->email) : null;
 
-        if (preference('user_default_signup_status') === 'Pending') {
+        // if (preference('user_default_signup_status') === 'Pending') {
             $request['activation_code'] = \Str::random(10);
             $request['activation_otp'] = random_int(1111, 9999);
-        }
+        // }
 
         try {
             DB::beginTransaction();
@@ -103,7 +103,7 @@ class AuthController extends Controller
                     $subscriptionService->storeFreeCredit($defaultPackage, $id);
                 }
                 $emailResponse = ['status' => true];
-
+//REVISIT THIS
                 if ($request['status'] === "Pending") {
                     $emailResponse = (new UserVerificationCodeMailService)->send($request);
                 } elseif (preference('welcome_email') == 1) {

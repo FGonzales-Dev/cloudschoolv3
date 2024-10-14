@@ -234,7 +234,7 @@ class PreferencesTableSeeder extends Seeder
                 'id' => 101,
                 'category' => 'preference',
                 'field' => 'user_default_signup_status',
-                'value' => 'Active',
+                'value' => 'Pending',
             ),
             32 =>
             array (

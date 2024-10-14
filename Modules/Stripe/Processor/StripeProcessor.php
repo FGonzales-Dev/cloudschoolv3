@@ -9,37 +9,28 @@
 
 namespace Modules\Stripe\Processor;
 
+use Modules\Gateway\Contracts\PaymentProcessorInterface;
 use Modules\Gateway\Services\GatewayHelper;
 use Modules\Stripe\Entities\Stripe as StripeModel;
 use Modules\Stripe\Response\StripeResponse;
-use Stripe\Checkout\Session;
+use Stripe\Charge;
 use Stripe\Stripe;
 use Stripe\Exception\AuthenticationException;
 use Stripe\Exception\OAuth\InvalidRequestException;
-use Modules\Gateway\Contracts\{
-    PaymentProcessorInterface,
-    RequiresCallbackInterface
-};
 
 
-class StripeProcessor implements PaymentProcessorInterface, RequiresCallbackInterface
+class StripeProcessor implements PaymentProcessorInterface
 {
+    private $token;
     private $secret;
     private $key;
     private $helper;
-    private $purchaseData;
-    private $successUrl;
-    private $cancelUrl;
 
-    /**
-     * Initialization
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->helper = GatewayHelper::getInstance();
     }
+
 
     /**
      * Handles payment for stripe
@@ -52,14 +43,11 @@ class StripeProcessor implements PaymentProcessorInterface, RequiresCallbackInte
     {
         $this->stripeSetup($request);
 
+        $this->data = $this->helper->getPurchaseData($this->key);
+
         $charge = $this->charge();
-        if (!$charge) {
-            throw new \Exception(__('Payment Request failed due to some issues. Please try again later.'));
-        }
 
-        $this->setStripeSessionId($charge->id);
-
-        return redirect($charge->url);
+        return new StripeResponse($this->data, $charge);
     }
 
 
@@ -76,11 +64,8 @@ class StripeProcessor implements PaymentProcessorInterface, RequiresCallbackInte
             $this->key = $this->helper->getPaymentCode();
             $stripe = StripeModel::firstWhere('alias', 'stripe')->data;
             $this->secret = $stripe->clientSecret;
-            $this->purchaseData = $this->helper->getPurchaseData($this->key);
-            $this->successUrl = route(moduleConfig('gateway.payment_callback'), withOldQueryIntegrity(['gateway' => 'stripe']));
-            $this->cancelUrl = route(moduleConfig('gateway.payment_cancel'), withOldQueryIntegrity(['gateway' => 'stripe']));
+            $this->token = $request->stripeToken;
             Stripe::setApiKey($this->secret);
-
         } catch (\Exception $e) {
             paymentLog($e);
             throw new \Exception(__('Error while trying to setup stripe.'));
@@ -96,22 +81,10 @@ class StripeProcessor implements PaymentProcessorInterface, RequiresCallbackInte
     private function charge()
     {
         try {
-            return Session::create([
-                'line_items' => [
-                    [
-                        'price_data' => [
-                            'product_data' => [
-                                'name' => config('app.name') . ' Payment'
-                            ],
-                            'unit_amount' => round($this->purchaseData->total * 100, 0),
-                            'currency' => $this->purchaseData->currency_code,
-                        ],
-                        'quantity' => 1,
-                    ]
-                ],
-                'mode' => 'payment',
-                'success_url' => $this->successUrl,
-                'cancel_url' => $this->cancelUrl,
+            return Charge::create([
+                "amount" => round($this->data->total * 100, 0),
+                "currency" => $this->data->currency_code,
+                "source" => $this->token,
             ]);
         } catch (InvalidRequestException $e) {
             throw new \Exception(__('Payment Request failed due to some issues. Please try again later.'));
@@ -120,34 +93,5 @@ class StripeProcessor implements PaymentProcessorInterface, RequiresCallbackInte
         } catch (\Exception $e) {
             throw new \Exception($e->getMessage());
         }
-    }
-
-    private function setStripeSessionId($id)
-    {
-        session([$this->key . 'stripe_session_id' => $id]);
-    }
-
-    private function getStripeSessionId()
-    {
-        return session($this->key . 'stripe_session_id');
-    }
-
-    public function validateTransaction($request)
-    {
-        $this->stripeSetup($request);
-        $line_item = Session::retrieve($this->getStripeSessionId());
-
-        return new StripeResponse($this->purchaseData, $line_item);
-    }
-    
-    /**
-     * Payment cancel method
-     *
-     * @param array $request
-     * @return void
-     */
-    public function cancel($request)
-    {
-        throw new \Exception(__('Payment cancelled from Stripe.'));
     }
 }
