@@ -178,12 +178,12 @@ class LoginController extends Controller
             $request['name'] = $request->first_name . ' ' . $request->last_name;
             $request['password'] = Hash::make($request->password);
             $request['email'] = strtolower($request->email);
-            $request['status'] = preference('user_default_signup_status') ?? 'Pending';
+            $request['status'] = 'Pending';
 
-            if (preference('user_default_signup_status') === 'Pending') {
+            // if (preference('user_default_signup_status') === 'Pending') {
                 $request['activation_code'] = Str::random(10);
                 $request['activation_otp'] = random_int(1111, 9999);
-            }
+            // }
 
             $role = Role::getAll()->where('type', 'user')->first();
             try {
