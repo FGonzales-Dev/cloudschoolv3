@@ -178,7 +178,7 @@ class LoginController extends Controller
             $request['name'] = $request->first_name . ' ' . $request->last_name;
             $request['password'] = Hash::make($request->password);
             $request['email'] = strtolower($request->email);
-            $request['status'] =  'Pending';
+            $request['status'] = preference('user_default_signup_status') ?? 'Pending';
 
             if (preference('user_default_signup_status') === 'Pending') {
                 $request['activation_code'] = Str::random(10);
