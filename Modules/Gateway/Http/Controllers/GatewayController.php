@@ -80,7 +80,6 @@ class GatewayController extends Controller
             $viewClass = GatewayHandler::getView($request->gateway);
             return $viewClass::paymentView($this->helper->getPaymentCode());
         }
-    
         return redirect(route('gateway.payment', withOldQueryString()))->withErrors(__('Payment method not found.'));
     }
 
@@ -118,13 +117,10 @@ class GatewayController extends Controller
                 }
                 PaymentLog::where('code', $code)->update($this->getUpdateData($response));
             } catch (\Exception $e) {
-              
                 return redirect(route('gateway.payment', withOldQueryIntegrity()))->withErrors($e->getMessage());
             }
-         
             return redirect()->route(techDecrypt(request()->to), withOldQueryIntegrity());
         }
-      
         return redirect(route('gateway.payment', withOldQueryIntegrity()))->withErrors(__('Payment method not available.'));
     }
 
@@ -143,10 +139,8 @@ class GatewayController extends Controller
             $response = $processor->validateTransaction($request);
             $code = $this->helper->getPaymentCode();
             PaymentLog::where('code', $code)->update($this->getUpdateData($response));
-         
             return redirect(route(techDecrypt(request()->to), withOldQueryIntegrity()));
         } catch (\Exception $e) {
-         
             return redirect(route('gateway.payment', withOldQueryIntegrity()))->withErrors($e->getMessage());
         }
     }
@@ -242,7 +236,6 @@ class GatewayController extends Controller
         if (isset($errors[$request->error])) {
             $data['message'] = $errors[$request->error];
         }
-        dd('xxx');
         return view("gateway::failed-payment", $data);
     }
 }

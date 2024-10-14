@@ -4,7 +4,7 @@ namespace Modules\Gateway\Entities;
 
 use Nwidart\Modules\Exceptions\ModuleNotFoundException;
 use Nwidart\Modules\Facades\Module;
-use Illuminate\Support\Facades\Log;
+
 class GatewayModule extends Module
 {
     private $nameOnly = false;
@@ -43,22 +43,14 @@ class GatewayModule extends Module
      */
     public function paymentGateways()
     {
-       
         $addons = $this->enabledOnly ? parent::allEnabled() : parent::all();
-      
         $gateways = array();
 
         foreach ($addons as $addon) {
-            // Check if the module name is "Stripe"
-            if ($addon->getName() === 'Stripe') {
-                // Check if the addon has a 'gateway' property (optional if you want this condition)
-                if ($addon->get('gateway')) {
-                    // dd($addon); // This will dump the Stripe module when found
-                    $gateways[] = $this->nameOnly ? $addon->getName() : $addon;
-                }
+            if ($addon->get('gateway')) {
+                $gateways[] = $this->nameOnly ? $addon->getName() : $addon;
             }
         }
-      
         return $gateways;
     }
 
@@ -98,7 +90,7 @@ class GatewayModule extends Module
                 $payableGateways[] = $gateway;
             }
         }
-  
+
         return $payableGateways;
     }
 
@@ -155,7 +147,7 @@ class GatewayModule extends Module
                 $payableGateways[] = $gateway;
             }
         }
-      
+
         return $payableGateways;
     }
 
@@ -174,7 +166,6 @@ class GatewayModule extends Module
                 $gateways[] = $this->nameOnly ? $addon->getName() : $addon;
             }
         }
-      
         return $gateways;
     }
 
@@ -195,7 +186,7 @@ class GatewayModule extends Module
                 $payableGateways[] = $gateway;
             }
         }
-       
+
         return $payableGateways;
     }
 

@@ -37,13 +37,11 @@ class GatewayRedirect
 
         if ((!is_null($request) && $request->wantsJson()) || request()->payer == 'guest') {
             request()->query->add(withOldQueryString(['code' => techEncrypt($code), 'redirect' => 'confirmation']));
-           dd('yyyy');
-           
             return route('gateway.payment',  withOldQueryString(['code' => techEncrypt($code), 'redirect' => 'confirmation', 'integrity' => getIntegrityKey(),'paymentType' => techEncrypt($paymentType)]));
         }
         request()->query->add(withOldQueryString(['code' => techEncrypt($code), 'payer' => 'user']));
-        // dd('zzzz');
-        return route('gateway.payment', withOldQueryString(['integrity' => getIntegrityKey()]));
+
+        return route('gateway.payment', withOldQueryString(['integrity' => getIntegrityKey(), 'paymentType' => techEncrypt($paymentType)]));
     }
 
 
@@ -71,7 +69,7 @@ class GatewayRedirect
         $params = array_merge($params, $options);
 
         request()->query->add($params);
-        dd('1111');
+
         return route('gateway.payment', withOldQueryString(['integrity' => getIntegrityKey()]));
     }
 
