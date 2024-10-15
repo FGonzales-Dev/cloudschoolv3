@@ -41,7 +41,7 @@ class GatewayRedirect
         }
         request()->query->add(withOldQueryString(['code' => techEncrypt($code), 'payer' => 'user']));
 
-        return route('gateway.payment', withOldQueryString(['integrity' => getIntegrityKey(), 'paymentType' => techEncrypt($paymentType)]));
+        return route('gateway.payment', withOldQueryString(['integrity' => getIntegrityKey()]));
     }
 
 
