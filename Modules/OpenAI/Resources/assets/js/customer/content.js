@@ -8,7 +8,8 @@ script.onload = function () {
         marked.setOptions({
             gfm: true,
             breaks: true,
-            headerIds: false
+            headerIds: false,
+            sanitize: false,
         });
 
         var markdownText = `
