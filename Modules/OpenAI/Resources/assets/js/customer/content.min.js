@@ -1,16 +1,22 @@
+// Dynamically add the marked.min.js CDN script
 var script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js';
+script.src = 'https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js';
 script.onload = function () {
-    console.log('Marked.js loaded successfully');
+    if (typeof window.marked !== "undefined") {
+        console.log('Marked.js loaded successfully');
 
-    // You can now use marked.js to convert markdown to HTML
-    // Example usage within the script, if needed:
-    var markdownText = "**Bold text** and *italic text*";
-    var htmlContent = marked(markdownText);
-    console.log(htmlContent);
+        // Example usage: Converting markdown to HTML
+        var markdownText = "**Bold text** and *italic text*";
+        var htmlContent = window.marked(markdownText);  // Access marked as window.marked
+        console.log(htmlContent);
+    } else {
+        console.error("Marked.js failed to load or isn't available");
+    }
+};
+script.onerror = function () {
+    console.error("Error loading Marked.js script.");
 };
 document.head.appendChild(script);
-
 
 function hideProviderOptions() {
     $(".ProviderOptions").each(function () {
@@ -152,9 +158,11 @@ $(document).on("submit", "#openai-form", function (e) {
                         let stream = e.data;
                         if (stream && stream !== "[DONE]") {
                             gethtml += stream;
-                            console.log(gethtml)
+                            // console.log(gethtml)
                             // let convertedHtml = convertMarkdown(gethtml);
-                            tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
+                            console.log(gethtml)
+
+                            tinyMCE.activeEditor.setContent(marked(gethtml), { format: "html" });
                         }
                     }
                 };
