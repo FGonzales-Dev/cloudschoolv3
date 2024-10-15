@@ -164,7 +164,7 @@ $(document).on("submit", "#openai-form", function (e) {
                             // let convertedHtml = convertMarkdown(gethtml);
 
 
-                            tinyMCE.activeEditor.setContent(gethtml, { format: "html" });
+                            tinyMCE.activeEditor.setContent(stream, { format: "html" });
                         }
                     }
                 };
