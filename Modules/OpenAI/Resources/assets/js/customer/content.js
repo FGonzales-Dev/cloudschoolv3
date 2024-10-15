@@ -160,7 +160,7 @@ $(document).on("submit", "#openai-form", function (e) {
                             gethtml += stream;
                             // console.log(gethtml)
                             // let convertedHtml = convertMarkdown(gethtml);
-                            console.log(gethtml)
+                            console.log(marked(gethtml));
 
                             tinyMCE.activeEditor.setContent(marked(gethtml), { format: "html" });
                         }
