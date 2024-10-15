@@ -6,7 +6,7 @@ script.onload = function () {
         console.log('Marked.js loaded successfully');
 
         // Example usage: Converting markdown to HTML
-        var markdownText = "**Bold text** and *italic text* #Header1";
+        var markdownText = "**Bold text** and *italic text* # Header1";
         var htmlContent = window.marked(markdownText);  // Access marked as window.marked
         console.log(htmlContent);
     } else {
