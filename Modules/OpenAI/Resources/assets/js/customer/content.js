@@ -6,7 +6,19 @@ script.onload = function () {
         console.log('Marked.js loaded successfully');
 
         // Example usage: Converting markdown to HTML
-        var markdownText = "**Bold text** and *italic text* # Header1";
+        var markdownText = `
+        # Header 1
+        **This is bold text for Header 1**
+        
+        ## Header 2
+        *This is italic text for Header 2*
+        
+        ### Header 3
+        ***This is bold and italic text for Header 3***
+        
+        #### Header 4
+        _This is another italic text for Header 4_
+        `;
         var htmlContent = window.marked(markdownText);  // Access marked as window.marked
         console.log(htmlContent);
     } else {
