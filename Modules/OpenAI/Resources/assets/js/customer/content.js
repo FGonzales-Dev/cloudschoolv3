@@ -164,9 +164,18 @@ $(document).on("submit", "#openai-form", function (e) {
                             // gethtml += marked(stream);
                             // console.log(gethtml)
                             // let convertedHtml = convertMarkdown(gethtml);
-
                             fullStream += stream;
+
+                            // tinyMCE.activeEditor.setContent(fullStream, { format: "html" });
+                        } else if (stream === "[DONE]") {
+                            // The stream is done, process the fullStream now
+                            console.log("Full stream received:", fullStream);
+
+                            // Set the full stream content in TinyMCE editor
                             tinyMCE.activeEditor.setContent(fullStream, { format: "html" });
+
+                            // Optionally reset fullStream for the next operation
+                            fullStream = "";
                         }
                     }
                 };
