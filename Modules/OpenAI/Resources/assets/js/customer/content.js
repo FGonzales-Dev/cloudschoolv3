@@ -6,14 +6,17 @@ script.onload = function () {
         console.log('Marked.js loaded successfully');
 
 
-        var markdownText = `**Bold text** and *italic text*
-        # Header1
-         and 
-          ## Header 2
-           and 
-           ### Header 3 
-           and 
-           #### Header 4`;
+        var markdownText = `
+        **Bold text** and *italic text*
+        
+        # Header 1
+        
+        ## Header 2
+        
+        ### Header 3
+        
+        #### Header 4
+                `;
         var htmlContent = window.marked(markdownText);
         console.log(htmlContent);
     } else {
