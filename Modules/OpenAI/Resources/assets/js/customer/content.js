@@ -5,9 +5,9 @@ script.onload = function () {
     if (typeof window.marked !== "undefined") {
         console.log('Marked.js loaded successfully');
 
-        // Example usage: Converting markdown to HTML
-        var markdownText = "**Bold text** and *italic text* # Header1 ## Header 2 ### Header 3 #### Header 4";
-        var htmlContent = window.marked(markdownText);  // Access marked as window.marked
+
+        var markdownText = "**Bold text** and *italic text* # Header1 and  ## Header 2 and ### Header 3 and #### Header 4";
+        var htmlContent = window.marked(markdownText);
         console.log(htmlContent);
     } else {
         console.error("Marked.js failed to load or isn't available");
