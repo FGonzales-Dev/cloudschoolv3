@@ -5,18 +5,18 @@ script.onload = function () {
     if (typeof window.marked !== "undefined") {
         console.log('Marked.js loaded successfully');
 
+        marked.setOptions({
+            gfm: true,
+            breaks: true,
+            headerIds: false
+        });
 
         var markdownText = `
         **Bold text** and *italic text*
-        
         # Header 1
-        
         ## Header 2
-        
         ### Header 3
-        
-        #### Header 4
-                `;
+        #### Header 4`;
         var htmlContent = window.marked(markdownText);
         console.log(htmlContent);
     } else {
