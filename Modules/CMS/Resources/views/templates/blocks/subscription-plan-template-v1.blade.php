@@ -198,6 +198,7 @@
                                 <div style="height: 100%; border-radius: 8px;"
                                     class="border bg-white dark:bg-color-14 6xl:py-9 py-8 6xl:px-11 lg:px-5 px-8 sub-plan-rtl flex flex-col justify-between">
                                     <div class="flex flex-col">
+
                                         <p class="{{ $planTextColor }} text-24 font-medium font-Figtree break-words">
                                             {{ $package['name'] }}</p>
 

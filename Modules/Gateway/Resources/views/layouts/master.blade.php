@@ -34,10 +34,22 @@
         <div class="svg-1">
             @include('gateway::partial.logo')
         </div>
-        <p class="para-2">{{ $packageName }}</p>
+        <p class="text-color-14 dark:text-white text-24 font-medium font-Figtree break-words">{{ $packageName }}</p>
 
         <p class="para-1">{{ __('Amount to be paid') }}</p>
-        <p class="para-2">{{ formatNumber($purchaseData->total) }}</p>
+
+
+        <p class="text-36 font-medium font-RedHat text-color-14 dark:text-white mt-1">
+
+            <span class="text-48 font-bold break-all">{{ formatNumber($purchaseData->total) }}</span>
+
+            <span class="text-18">/ {{ ucfirst($purchaseData->sending_details->billing_cycle) }}</span>
+        </p>
+
+
+
+
+
         <p class="para-1">{{ __('currency') }}</p>
         <p class="para-3 para-2">{{ $purchaseData->currency_code }}</p>
         <p class="para-6">Please Review And Confirm Subscription Plan</p>

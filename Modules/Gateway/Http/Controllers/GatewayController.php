@@ -56,7 +56,7 @@ class GatewayController extends Controller
         $gateways = (new GatewayModule)->$paymentType();
        
 
-        // dd($purchaseData->sending_details->package_id);
+    //  dd($purchaseData->sending_details);
 
 
 // dd(Package::find($purchaseData->sending_details->package_id)->name);

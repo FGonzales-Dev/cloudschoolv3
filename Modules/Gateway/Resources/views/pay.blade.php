@@ -3,12 +3,13 @@
 @section('content')
     @forelse ($gateways as $gateway)
         <a href="{{ route('gateway.pay', withOldQueryIntegrity(['gateway' => $gateway->alias])) }}" class="pay-box">
-            <div class="grow">
-                <p class="confirm-purchase">
-                    Confirm Purchase</p>
-                {{-- <img class="image-2" src="{{ asset(moduleConfig($gateway->alias . '.logo')) }}" alt="{{ __('Image') }}" /> --}}
-            </div>
+            <button type="submit"
+                class="mt-[34px] text-white dark:text-color-14 text-16 font-semibold py-[13px] px-8 rounded-lg bg-color-14 dark:bg-white font-Figtree plan-loader flex gap-3">
+                Confirm Plan</button>
         </a>
+
+
+
     @empty
         <a href="javascript:void(0)" onclick="history.back()" class="pay-box">
             <div class="grow">
