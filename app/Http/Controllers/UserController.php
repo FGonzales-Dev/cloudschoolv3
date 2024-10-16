@@ -218,13 +218,13 @@ class UserController extends Controller
         User::where('activation_otp', $code)->update(['status' => 'Active', 'activation_code' => NULL, 'activation_otp' => NULL, 'email_verified_at' => now()]);
         $user->status = 'Active';
 
-        if (preference('welcome_email') == 1) {
+        // if (preference('welcome_email') == 1) {
             $emailResponse = (new UserMailService)->send($user);
 
             if (!$emailResponse['status']) {
                 return redirect()->back()->withInput()->withErrors(['fail' => $emailResponse['message']]);
             }
-        }
+        // }
         
         $this->setSessionValue(['status' => 'success', 'message' => __('Your account is activated, please login')]);
         return redirect()->route('login');
