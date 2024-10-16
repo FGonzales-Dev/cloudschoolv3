@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 
-<html lang="{{ App::getLocale() }}" dir="ltr" class="{{ \Illuminate\Support\Facades\Cookie::get('theme_preference') }}">
+<html lang="{{ App::getLocale() }}" dir="ltr"
+    class="{{ \Illuminate\Support\Facades\Cookie::get('theme_preference') }}">
 
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3TJDKCW5TP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'G-3TJDKCW5TP');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-3TJDKCW5TP');
+    </script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,11 +34,13 @@
         <div class="svg-1">
             @include('gateway::partial.logo')
         </div>
+        <p class="para-2">{{ $packageName }}</p>
+
         <p class="para-1">{{ __('Amount to be paid') }}</p>
         <p class="para-2">{{ formatNumber($purchaseData->total) }}</p>
         <p class="para-1">{{ __('currency') }}</p>
         <p class="para-3 para-2">{{ $purchaseData->currency_code }}</p>
-        <p class="para-6">{{ __('Choose Payments from below') }}</p>
+        <p class="para-6">Please Review And Confirm Subscription Plan</p>
         <div class="straight-line"></div>
 
         <div>
@@ -43,11 +49,15 @@
                 @yield('content')
             </div>
         </div>
-        <a  href="#" class="close-payment process-prev position-relative d-flex justify-content-center align-items-center cursor-pointer return">
-            <svg class="position-absolute me-3" width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.59216 0L4.6714 1.05155L2.92161 2.75644H10.2369C10.6583 2.75644 11 3.08934 11 3.5C11 3.91066 10.6583 4.24356 10.2369 4.24356H2.92161L4.6714 5.94845L3.59216 7L0 3.5L3.59216 0Z" fill="currentColor"></path>
+        <a href="#"
+            class="close-payment process-prev position-relative d-flex justify-content-center align-items-center cursor-pointer return">
+            <svg class="position-absolute me-3" width="11" height="7" viewBox="0 0 11 7" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M3.59216 0L4.6714 1.05155L2.92161 2.75644H10.2369C10.6583 2.75644 11 3.08934 11 3.5C11 3.91066 10.6583 4.24356 10.2369 4.24356H2.92161L4.6714 5.94845L3.59216 7L0 3.5L3.59216 0Z"
+                    fill="currentColor"></path>
             </svg>
-            <p class="prev mb-0">{{ __('Close')}}</p>
+            <p class="prev mb-0">{{ __('Close') }}</p>
         </a>
     </section>
     <script>

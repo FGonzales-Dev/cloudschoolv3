@@ -2,10 +2,12 @@
 body {
     background-color: #f0f0f0;
 }
+
 .lebel-text {
     text-align: left;
     align-items: left;
 }
+
 .card1 {
     padding: 25px;
     border: 1px solid #f3f3f3;
@@ -19,10 +21,12 @@ body {
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.07);
     position: relative;
 }
+
 .svg-1 {
     text-align: center;
     margin-bottom: 53px;
 }
+
 .para-1 {
     text-transform: uppercase;
     color: #898989;
@@ -31,6 +35,7 @@ body {
     margin-bottom: 5px;
     line-height: 18px;
 }
+
 .para-2 {
     text-transform: uppercase;
     color: #2c2c2c;
@@ -39,11 +44,13 @@ body {
     line-height: 52px;
     margin-bottom: 16px;
 }
+
 .para-3 {
     font-size: 24px;
     margin-bottom: 44px;
     line-height: 31px;
 }
+
 .para-4 {
     color: #2c2c2c;
     font-weight: 500;
@@ -51,12 +58,14 @@ body {
     line-height: 18px;
     margin-bottom: 8px;
 }
+
 .test {
     display: flex;
     flex-wrap: wrap;
     gap: 26px;
     margin-top: 24px;
 }
+
 .pay-box {
     border: 1px solid #dfdfdf;
     background-color: #ffffff;
@@ -64,10 +73,12 @@ body {
     cursor: pointer;
     overflow: hidden;
 }
+
 .pay-box:hover {
     transition-delay: 150ms;
     border: 1px solid #2c2c2c;
 }
+
 .grow {
     height: 76px;
     width: 170px;
@@ -81,41 +92,50 @@ body {
     transform: translateZ(0);
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
+
 .grow:hover {
     transform: scale(1.2);
 }
+
 .image-1 {
     width: 94px;
     height: 23px;
     object-fit: contain;
 }
+
 .image-2 {
     width: 72px;
     height: 22px;
     object-fit: contain;
 }
+
 .image-3 {
     width: 55px;
     height: 33px;
     object-fit: contain;
 }
+
 .image-4 {
     width: 69px;
     height: 29px;
     object-fit: contain;
 }
+
 .image-5 {
     width: 84px;
     height: 24px;
     object-fit: contain;
 }
+
 .test:last-child {
     margin-right: 0px;
 }
+
 .payment {
     margin-left: 85px;
     margin-top: 28px;
 }
+
 .para-5 {
     color: #898989;
     font-weight: 500;
@@ -123,9 +143,11 @@ body {
     padding-left: 8px;
     line-height: 21px;
 }
+
 .return {
     margin-top: 40px;
 }
+
 .straight-line {
     height: 3px;
     width: 60px;
@@ -133,6 +155,7 @@ body {
     background-color: #fcca19;
     margin: auto;
 }
+
 /* end card1 */
 
 /* card-2 */
@@ -141,15 +164,34 @@ body {
     outline: 0;
     box-shadow: none;
 }
+
 .form-control {
     border: 1px solid #dfdfdf;
 }
+
 .form-control:hover {
     border: 1px solid #2c2c2c;
 }
+
 .pay-form {
     margin-top: 32px;
 }
+
+a {
+    text-decoration: none;
+}
+
+.confirm-purchase {
+    margin-top: 12px;
+    color: #2c2c2c;
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 12px;
+    text-align: center;
+    line-height: 21px;
+    text-decoration: none !important;
+}
+
 .para-6 {
     margin-top: 28px;
     color: #2c2c2c;
@@ -159,6 +201,7 @@ body {
     text-align: center;
     line-height: 21px;
 }
+
 .input-text {
     display: flex;
     align-items: center;
@@ -170,11 +213,13 @@ body {
     border-right: none;
     border-radius: 0.25rem;
 }
+
 .input-svg {
     position: absolute;
     pointer-events: none;
     top: 3px;
 }
+
 .input-field {
     width: 273px;
     height: 48px;
@@ -185,19 +230,23 @@ body {
     border-radius: 4px;
     padding-left: 60px;
 }
+
 .input-field:hover {
     border: 1px solid #2c2c2c;
 }
+
 .cvc {
     border-left: none;
     position: relative;
 }
+
 .credit-card {
     width: 100%;
     height: 48px;
     border-left: none;
     position: relative;
 }
+
 .card-input-field {
     width: 100%;
     height: 48px;
@@ -206,31 +255,38 @@ body {
     padding-left: 60px;
     color: #bcbcbc;
 }
+
 .divider {
     margin-top: 6px;
 }
+
 .lebel-text {
     color: #2c2c2c;
     font-size: 14px;
     text-transform: none;
     margin-bottom: 8px;
 }
+
 input:focus {
     outline: none !important;
 }
+
 .form-control.is-valid,
 .was-validated .form-control:valid {
     border-color: #009651;
     background-color: #ebf9f1;
 }
+
 .form-control.is-invalid:focus,
 .was-validated .form-control:invalid:focus {
     box-shadow: none;
 }
+
 .form-control.is-valid:focus,
 .was-validated .form-control:valid:focus {
     box-shadow: none;
 }
+
 .card2 {
     padding: 35px 32px 29px;
     border: 1px solid #f3f3f3;
@@ -245,16 +301,19 @@ input:focus {
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.07);
     position: relative;
 }
+
 .input-group-text {
     border: none;
     text-align: center;
     justify-content: center;
     align-items: center;
 }
+
 .input-group-text {
     margin-left: -10px;
     margin-right: 5px;
 }
+
 .pay-button {
     width: 100%;
     height: 60px;
@@ -267,20 +326,24 @@ input:focus {
     margin-top: 20px;
     font-size: 20px;
 }
+
 .pay-button:hover {
     background-color: #fcca19;
     color: #2c2c2c;
 }
+
 .invalid-feedback {
     font-size: 12px;
     font-weight: 500;
     color: #e43147;
 }
+
 .date-credit {
     margin-top: 24px;
     display: flex;
     justify-content: space-between;
 }
+
 .date-label {
     width: 273px;
     height: 48px;
@@ -290,9 +353,11 @@ input:focus {
     border: 1px solid #dfdfdf;
     border-radius: 4px;
 }
+
 .date-label:hover {
     border: 1px solid #2c2c2c;
 }
+
 .dates-input {
     display: block;
     border: none;
@@ -304,9 +369,11 @@ input:focus {
     color: #bcbcbc;
     margin-top: -45px;
 }
+
 .dates-input:focus {
     outline: none;
 }
+
 #ui-datepicker-div {
     display: none;
     background-color: #fff;
@@ -315,10 +382,12 @@ input:focus {
     border-radius: 0.5rem;
     padding: 0.5rem;
 }
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
 .ui-datepicker-calendar thead th {
     padding: 0.25rem 0;
     text-align: center;
@@ -326,11 +395,13 @@ table {
     font-weight: 400;
     color: #78909c;
 }
+
 .ui-datepicker-calendar tbody td {
     width: 2.5rem;
     text-align: center;
     padding: 0;
 }
+
 .ui-datepicker-calendar tbody td a {
     display: block;
     border-radius: 0.25rem;
@@ -340,13 +411,16 @@ table {
     font-size: 0.875rem;
     text-decoration: none;
 }
+
 .ui-datepicker-calendar tbody td a:hover {
     background-color: #e0f2f1;
 }
+
 .ui-datepicker-calendar tbody td a.ui-state-active {
     background-color: #009688;
     color: white;
 }
+
 .ui-datepicker-header a.ui-corner-all {
     cursor: pointer;
     position: absolute;
@@ -357,9 +431,11 @@ table {
     border-radius: 0.25rem;
     transition: 0.3s all;
 }
+
 .ui-datepicker-header a.ui-corner-all:hover {
     background-color: #eceff1;
 }
+
 .ui-datepicker-header a.ui-datepicker-prev {
     left: 0;
     background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==");
@@ -368,6 +444,7 @@ table {
     background-position: 50%;
     transform: rotate(180deg);
 }
+
 .ui-datepicker-header a.ui-datepicker-next {
     right: 0;
     background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyIgdmlld0JveD0iMCAwIDEzIDEzIj48cGF0aCBmaWxsPSIjNDI0NzcwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03LjI4OCA2LjI5NkwzLjIwMiAyLjIxYS43MS43MSAwIDAgMSAuMDA3LS45OTljLjI4LS4yOC43MjUtLjI4Ljk5OS0uMDA3TDguODAzIDUuOGEuNjk1LjY5NSAwIDAgMSAuMjAyLjQ5Ni42OTUuNjk1IDAgMCAxLS4yMDIuNDk3bC00LjU5NSA0LjU5NWEuNzA0LjcwNCAwIDAgMS0xLS4wMDcuNzEuNzEgMCAwIDEtLjAwNi0uOTk5bDQuMDg2LTQuMDg2eiIvPjwvc3ZnPg==");
@@ -375,9 +452,11 @@ table {
     background-size: 10px;
     background-position: 50%;
 }
-.ui-datepicker-header a > span {
+
+.ui-datepicker-header a>span {
     display: none;
 }
+
 .ui-datepicker-title {
     text-align: center;
     line-height: 2rem;
@@ -386,14 +465,17 @@ table {
     font-weight: 500;
     padding-bottom: 0.25rem;
 }
+
 .ui-datepicker-week-col {
     color: #78909c;
     font-weight: 400;
     font-size: 0.75rem;
 }
+
 .icon {
     margin: 14px 10px 9px 14px;
 }
+
 .data-bs-[x-placement^="left"] .arrow::before,
 .data-bs-tooltip-bottom .arrow::before {
     border-bottom-color: #f00;
@@ -403,6 +485,7 @@ table {
     margin: 0 auto;
     width: 119px;
 }
+
 .return-arrow {
     margin-right: 80px;
     margin-top: 7px;
@@ -412,6 +495,7 @@ table {
     border-left-color: #898989;
     display: none;
 }
+
 .tooltip-inner {
     background-color: #f3f3f3;
     border: 1px solid #dfdfdf;
@@ -423,6 +507,7 @@ table {
     margin-bottom: 60px;
     font-size: 10px;
 }
+
 /* card2 end */
 
 /* card 3 */
@@ -430,6 +515,7 @@ table {
     display: flex;
     justify-content: space-between;
 }
+
 .card3 {
     border: 1px solid #f3f3f3;
     background-color: white;
@@ -442,10 +528,12 @@ table {
     margin-top: 120px;
     position: relative;
 }
+
 .card-input-field::placeholder {
     color: #bcbcbc;
     font-size: 14px;
 }
+
 .note {
     margin-top: 18px;
     color: #898989;
@@ -453,6 +541,7 @@ table {
     font-weight: 500;
     margin-bottom: 0;
 }
+
 .email-field {
     margin-top: 32px;
 }
@@ -462,6 +551,7 @@ table {
     max-height: 50px;
     object-fit: contain;
 }
+
 /* end card 3 */
 
 .payment-loader {
@@ -491,9 +581,10 @@ table {
     margin: 20px auto;
 }
 
-.back-button-text{
+.back-button-text {
     margin-left: 16px;
 }
+
 /* Spinner Circle Rotation */
 .sp-circle {
     border: 4px rgb(0 0 0 / 81%) solid;
@@ -531,47 +622,58 @@ table {
         width: auto;
         height: auto;
     }
+
     .test {
         gap: 15px;
     }
+
     .card3 {
         width: auto;
         height: auto;
         margin: 40px 20px 20px 20px;
         padding: 35px 15px 19px;
     }
+
     .card2 {
         width: auto;
         margin: 40px 20px 20px 20px;
         padding: 35px 15px 19px;
         height: auto;
     }
+
     .pay-button {
         font-size: 16px;
     }
+
     .amount-gateway {
         display: flex;
         flex-direction: column;
         margin: auto;
         align-items: center;
     }
+
     .para-1 {
         text-align: center;
     }
+
     .date-field {
         width: 100%;
     }
+
     .date-credit {
         display: flex;
         flex-direction: column;
         width: 100%;
     }
+
     .input-field {
         width: 100%;
     }
+
     .card-para {
         margin-top: 25px;
     }
+
     .grow {
         height: 60px;
         width: 140px;
@@ -581,26 +683,31 @@ table {
         align-items: center;
         text-align: center;
     }
+
     .image-1 {
         width: 77px;
         height: 19px;
         object-fit: contain;
     }
+
     .image-2 {
         width: 57px;
         height: 18px;
         object-fit: contain;
     }
+
     .image-3 {
         width: 50px;
         height: 30px;
         object-fit: contain;
     }
+
     .image-4 {
         width: 58px;
         height: 24px;
         object-fit: contain;
     }
+
     .image-5 {
         width: 70px;
         height: 20px;
@@ -610,19 +717,23 @@ table {
     .date-label {
         width: 100%;
     }
+
     .return {
         justify-content: right;
         margin: auto;
         width: 50px;
         margin-bottom: 25px;
     }
+
     .return-arrow {
         margin-right: 58px;
         margin-top: 7px;
     }
+
     .back:hover svg {
         left: -10px;
     }
+
     .return:hover svg {
         left: -30px;
     }
@@ -635,7 +746,8 @@ table {
 .process-hover:hover {
     color: #2c2c2c;
 }
-.process-prev{
+
+.process-prev {
     margin: 30px auto 0px;
     font-weight: 500;
     text-decoration: none !important;
@@ -645,26 +757,33 @@ table {
     padding: 12px;
     width: 74px;
 }
-html[lang="bg"] .process-prev{
+
+html[lang="bg"] .process-prev {
     width: 45px;
 }
-html[lang="ca"] .process-prev{
+
+html[lang="ca"] .process-prev {
     width: 45px;
 }
-html[lang="be"] .close-payment{
+
+html[lang="be"] .close-payment {
     width: 45px;
 }
-html[lang="nl"] .close-payment{
+
+html[lang="nl"] .close-payment {
     width: 45px;
 }
-a:hover{
-    color: unset!important;
+
+a:hover {
+    color: unset !important;
 }
+
 .process-prev svg {
     transition: right 0.3s;
     right: 48px;
- 
+
 }
+
 .process-prev:hover svg {
     right: 54px;
 }

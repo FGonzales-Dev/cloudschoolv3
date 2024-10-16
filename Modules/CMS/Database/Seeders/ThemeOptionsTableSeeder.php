@@ -104,7 +104,7 @@ class ThemeOptionsTableSeeder extends Seeder
             array (
                 'id' => 93,
                 'name' => 'default_template_header_logo_dark',
-                'value' => '',
+                'value' => '8cb43aa79a3e22e214260ef8dc6090c2.png',
             ),
             92 =>
             array (

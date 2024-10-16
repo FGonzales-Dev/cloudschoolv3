@@ -16,7 +16,10 @@ use Modules\Gateway\Facades\GatewayHandler;
 use Modules\Gateway\Redirect\GatewayRedirect;
 use Modules\Gateway\Services\GatewayHelper;
 use Modules\Gateway\Traits\ApiResponse;
+use Modules\Subscription\Entities\Package;
+    
 
+   
 class GatewayController extends Controller
 {
     use ApiResponse;
@@ -49,14 +52,20 @@ class GatewayController extends Controller
         $query = $request->query->all() ?? [];
         $paymentType = request()->paymentType ? techDecrypt(request()->paymentType) . 'PayableGateways' : 'allPayableGateways';
         $purchaseData = $this->helper->getPurchaseData();
+        $packageName = Package::find($purchaseData->sending_details->package_id)->name;    
         $gateways = (new GatewayModule)->$paymentType();
+       
 
+        // dd($purchaseData->sending_details->package_id);
+
+
+// dd(Package::find($purchaseData->sending_details->package_id)->name);
         if ($purchaseData->status == 'completed') {
             $message = __('Already paid for the order.');
             return view('gateway::pay', compact('gateways', 'purchaseData', 'message'));
         }
 
-        return view('gateway::pay', compact('gateways', 'purchaseData'));
+        return view('gateway::pay', compact('gateways', 'purchaseData',"packageName"));
     }
 
 

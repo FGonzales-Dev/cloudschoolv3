@@ -4,7 +4,9 @@
     @forelse ($gateways as $gateway)
         <a href="{{ route('gateway.pay', withOldQueryIntegrity(['gateway' => $gateway->alias])) }}" class="pay-box">
             <div class="grow">
-                <img class="image-2" src="{{ asset(moduleConfig($gateway->alias . '.logo')) }}" alt="{{ __('Image') }}" />
+                <p class="confirm-purchase">
+                    Confirm Purchase</p>
+                {{-- <img class="image-2" src="{{ asset(moduleConfig($gateway->alias . '.logo')) }}" alt="{{ __('Image') }}" /> --}}
             </div>
         </a>
     @empty
