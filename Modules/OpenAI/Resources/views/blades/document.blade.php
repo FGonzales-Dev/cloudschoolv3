@@ -124,6 +124,7 @@
     {{-- end main content --}}
 @endsection
 @section('js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
     <script src="{{ asset('public/assets/plugin/tinymce 6.3.1/js/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('Modules/OpenAI/Resources/assets/js/tiny_mce.min.js') }}"></script>
     <script>

@@ -172,11 +172,27 @@ $(document).on("submit", "#openai-form", function (e) {
                         if (stream && stream !== "[DONE]") {
 
 
-                            gethtml += stream;
-                            console.log(gethtml)
-                            gethtml = gethtml.trim();
-                            const convertedHtml = marked(gethtml);
-                            tinyMCE.activeEditor.setContent(convertedHtml, { format: "html" });
+                            // gethtml += stream;
+                            // console.log(gethtml)
+                            // gethtml = gethtml.trim();
+                            // const convertedHtml = marked(gethtml);
+                            // tinyMCE.activeEditor.setContent(convertedHtml, { format: "html" });
+
+                            // Append the current stream to the buffer
+                            mdhtml += stream;
+
+                            // Check for <br/> to determine when to convert and render
+                            let parts = mdhtml.split(/<br/ ?>/);
+                            for (let i = 0; i < parts.length - 1; i++) {
+                                // Convert each part up to the <br/> tag
+                                let converter = new showdown.Converter();
+                                let html = converter.makeHtml(parts[i]);
+
+                                // Append the converted HTML to TinyMCE
+                                tinyMCE.activeEditor.setContent(tinyMCE.activeEditor.getContent() + html);
+                            }
+                            // Keep the last part in the buffer (after the last <br/>)
+                            mdhtml = parts[parts.length - 1];
                         }
                     }
                 };
