@@ -187,7 +187,7 @@ $(document).on("submit", "#openai-form", function (e) {
                             // let parts = mdhtml.split(/<br\s*\/?>/);
                             let parts = mdhtml.split(/<br\/?>/);
                             // let parts = mdhtml.split(/<br/ ?>/);
-                            for (let i = 0; i < parts.length; i++) {
+                            for (let i = 0; i < parts.length - 1; i++) {
                                 // Convert each part up to the <br/> tag
                                 let converter = new showdown.Converter();
                                 let html = converter.makeHtml(parts[i]);
