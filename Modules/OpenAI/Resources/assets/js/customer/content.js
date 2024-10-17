@@ -168,6 +168,7 @@ $(document).on("submit", "#openai-form", function (e) {
 
                         let stream = e.data;
                         let fullStream = "";
+                        var mdhtml = "";
                         console.log("xxx");
                         if (stream && stream !== "[DONE]") {
 
@@ -179,7 +180,7 @@ $(document).on("submit", "#openai-form", function (e) {
                             // tinyMCE.activeEditor.setContent(convertedHtml, { format: "html" });
 
                             // Append the current stream to the buffer
-                            var mdhtml = "";
+
                             mdhtml += stream;
 
                             // Check for <br/> to determine when to convert and render
