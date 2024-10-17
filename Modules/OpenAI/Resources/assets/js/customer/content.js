@@ -167,59 +167,15 @@ $(document).on("submit", "#openai-form", function (e) {
                         // }
 
                         let stream = e.data;
-                        let fullStream = "";
-                        let mdhtml = "";
-
-                        // if (stream && stream !== "[DONE]") {
-
-
-                        //     // gethtml += stream;
-                        //     // console.log(gethtml)
-                        //     // gethtml = gethtml.trim();
-                        //     // const convertedHtml = marked(gethtml);
-                        //     // tinyMCE.activeEditor.setContent(convertedHtml, { format: "html" });
-
-                        //     // Append the current stream to the buffer
-
-                        //     mdhtml += stream;
-
-                        //     // Check for <br/> to determine when to convert and render
-                        //     // let parts = mdhtml.split(/<br\s*\/?>/);
-                        //     let parts = mdhtml.split(/<br\/?>/);
-                        //     // let parts = mdhtml.split(/<br/ ?>/);
-                        //     for (let i = 0; i < parts.length - 1; i++) {
-                        //         // Convert each part up to the <br/> tag
-                        //         let converter = new showdown.Converter();
-                        //         let html = converter.makeHtml(parts[i]);
-                        //         console.log(html);
-                        //         // Append the converted HTML to TinyMCE
-                        //         tinyMCE.activeEditor.setContent(tinyMCE.activeEditor.getContent() + html);
-                        //     }
-                        //     // Keep the last part in the buffer (after the last <br/>)
-                        //     mdhtml = parts[parts.length - 1];
-                        // }
-
-
+                        console.log("xxx");
                         if (stream && stream !== "[DONE]") {
-                            // Append the incoming stream data to mdhtml
-                            mdhtml += stream;
 
-                            // Split mdhtml by <br> or <br/>
-                            let parts = mdhtml.split(/<br\/?>/);
 
-                            // Loop through all parts except the last one
-                            for (let i = 0; i < parts.length - 1; i++) {
-                                // Convert each part to HTML using showdown
-                                let converter = new showdown.Converter();
-                                let html = converter.makeHtml(parts[i]);
-                                console.log(html);
+                            gethtml += stream;
+                            console.log(gethtml)
 
-                                // Append the converted HTML to TinyMCE's content
-                                tinyMCE.activeEditor.setContent(tinyMCE.activeEditor.getContent() + html);
-                            }
-
-                            // Keep the last part (the part after the last <br>) in mdhtml for further processing
-                            mdhtml = parts[parts.length - 1];
+                            const convertedHtml = marked(gethtml);
+                            tinyMCE.activeEditor.setContent(convertedHtml, { format: "html" });
                         }
                     }
                 };
