@@ -134,5 +134,5 @@
     <script src="{{ asset('Modules/OpenAI/Resources/assets/js/jquery.wordexport.min.js') }}"></script>
     <script src="{{ asset('Modules/OpenAI/Resources/assets/js/html2pdf.min.js') }}"></script>
     <script src="{{ asset('public/dist/js/custom/validation.min.js') }}"></script>
-    <script src="{{ asset('Modules/OpenAI/Resources/assets/js/customer/content.min.js') }}"></script>
+    <script src="{{ asset('Modules/OpenAI/Resources/assets/js/customer/content.js') }}"></script>
 @endsection
