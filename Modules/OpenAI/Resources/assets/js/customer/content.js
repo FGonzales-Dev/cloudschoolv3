@@ -169,7 +169,7 @@ $(document).on("submit", "#openai-form", function (e) {
                         let stream = e.data;
                         let fullStream = "";
                         let mdhtml = "";
-                        console.log("xxx");
+
                         if (stream && stream !== "[DONE]") {
 
 
@@ -185,12 +185,13 @@ $(document).on("submit", "#openai-form", function (e) {
 
                             // Check for <br/> to determine when to convert and render
                             // let parts = mdhtml.split(/<br\s*\/?>/);
-                            let parts = mdhtml.split(/<br/?>/);
-                            for (let i = 0; i < parts.length - 1; i++) {
+                            let parts = mdhtml.split(/<br\/?>/);
+                            // let parts = mdhtml.split(/<br/ ?>/);
+                            for (let i = 0; i < parts.length; i++) {
                                 // Convert each part up to the <br/> tag
                                 let converter = new showdown.Converter();
                                 let html = converter.makeHtml(parts[i]);
-
+                                console.log(html);
                                 // Append the converted HTML to TinyMCE
                                 tinyMCE.activeEditor.setContent(tinyMCE.activeEditor.getContent() + html);
                             }
