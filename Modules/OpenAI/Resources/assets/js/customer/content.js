@@ -168,7 +168,7 @@ $(document).on("submit", "#openai-form", function (e) {
 
                         let stream = e.data;
                         let fullStream = "";
-                        var mdhtml = "";
+                        let mdhtml = "";
                         console.log("xxx");
                         if (stream && stream !== "[DONE]") {
 
