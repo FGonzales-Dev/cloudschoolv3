@@ -176,7 +176,7 @@ $(document).on("submit", "#openai-form", function (e) {
                                 mangle: false,
                                 sanitize: false
                             });
-                            const convertedHtml = marked(gethtml);
+                            const convertedHtml = marked.parse(gethtml);
                             console.log("yyy");
                             console.log(convertedHtml);
                             tinyMCE.activeEditor.setContent(convertedHtml, { format: "raw" });
