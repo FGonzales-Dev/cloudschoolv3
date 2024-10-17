@@ -179,10 +179,12 @@ $(document).on("submit", "#openai-form", function (e) {
                             // tinyMCE.activeEditor.setContent(convertedHtml, { format: "html" });
 
                             // Append the current stream to the buffer
+                            var mdhtml = "";
                             mdhtml += stream;
 
                             // Check for <br/> to determine when to convert and render
-                            let parts = mdhtml.split(/<br\s*\/?>/);
+                            // let parts = mdhtml.split(/<br\s*\/?>/);
+                            let parts = mdhtml.split(/<br/ ?>/);
                             for (let i = 0; i < parts.length - 1; i++) {
                                 // Convert each part up to the <br/> tag
                                 let converter = new showdown.Converter();
