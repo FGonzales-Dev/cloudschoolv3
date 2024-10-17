@@ -169,10 +169,10 @@ $(document).on("submit", "#openai-form", function (e) {
                         let stream = e.data;
                         console.log("xxx");
                         if (stream && stream !== "[DONE]") {
-                            gethtml += marked(stream);
+                            gethtml += stream;
                             console.log(gethtml)
 
-                            const convertedHtml = gethtml;
+                            const convertedHtml = marked(gethtml);
                             console.log("yyy");
                             console.log(convertedHtml);
                             tinyMCE.activeEditor.setContent(convertedHtml, { format: "html" });
