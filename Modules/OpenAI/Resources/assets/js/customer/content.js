@@ -171,9 +171,11 @@ $(document).on("submit", "#openai-form", function (e) {
                         if (stream && stream !== "[DONE]") {
                             gethtml += stream;
                             console.log(gethtml)
-                            gethtml = gethtml.replace(/#\s*Title:/g, '#');
-                            gethtml = gethtml.replace(/---/g, '\n---\n');
-                            const convertedHtml = marked(gethtml);
+
+                            let converter = new showdown.Converter();
+
+                            // Convert markdown to HTML using Showdown
+                            const convertedHtml = converter.makeHtml(gethtml);
                             tinyMCE.activeEditor.setContent(convertedHtml, { format: "html" });
                         }
                     }
