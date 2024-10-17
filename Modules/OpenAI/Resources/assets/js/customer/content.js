@@ -171,7 +171,7 @@ $(document).on("submit", "#openai-form", function (e) {
                         if (stream && stream !== "[DONE]") {
                             gethtml += stream;
                             console.log(gethtml)
-                            getHtml + '<h1>TestHeader</h1>'
+                            getHtml += '<h1>TestHeader</h1>';
                             const convertedHtml = marked(gethtml);
                             console.log("yyy");
                             console.log(convertedHtml);
