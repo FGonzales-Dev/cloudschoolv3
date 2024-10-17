@@ -171,11 +171,15 @@ $(document).on("submit", "#openai-form", function (e) {
                         if (stream && stream !== "[DONE]") {
                             gethtml += stream;
                             console.log(gethtml)
-
+                            marked.setOptions({
+                                headerIds: false,
+                                mangle: false,
+                                sanitize: false
+                            });
                             const convertedHtml = marked(gethtml);
                             console.log("yyy");
                             console.log(convertedHtml);
-                            tinyMCE.activeEditor.setContent(convertedHtml, { format: "html" });
+                            tinyMCE.activeEditor.setContent(convertedHtml, { format: "raw" });
                         }
                     }
                 };
