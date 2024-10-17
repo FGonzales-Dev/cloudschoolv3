@@ -182,7 +182,7 @@ $(document).on("submit", "#openai-form", function (e) {
                             mdhtml += stream;
 
                             // Check for <br/> to determine when to convert and render
-                            let parts = mdhtml.split(/<br/ ?>/);
+                            let parts = mdhtml.split(/<br\s*\/?>/);
                             for (let i = 0; i < parts.length - 1; i++) {
                                 // Convert each part up to the <br/> tag
                                 let converter = new showdown.Converter();
