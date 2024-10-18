@@ -148,4 +148,5 @@
     <script src="{{ asset('Modules/OpenAI/Resources/assets/js/fileSaver.min.js') }}"></script>
     <script src="{{ asset('Modules/OpenAI/Resources/assets/js/jquery.wordexport.min.js') }}"></script>
     <script src="{{ asset('Modules/OpenAI/Resources/assets/js/html2pdf.min.js') }}"></script>
+    <script src="{{ asset('Modules/OpenAI/Resources/assets/js/customer/content.js') }}"></script>
 @endsection
