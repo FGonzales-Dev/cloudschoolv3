@@ -141,7 +141,7 @@
 @section('js')
     <script src="{{ asset('public/assets/plugin/tinymce 6.3.1/js/tinymce/tinymce.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.1.0/showdown.min.js"></script>
-    <script src="{{ asset('Modules/OpenAI/Resources/assets/js/tiny_mce2.js') }}"></script>
+    <script src="{{ asset('Modules/OpenAI/Resources/assets/js/tiny_mce.min.js') }}"></script>
     <script>
         var PROMT_URL = "{{ !empty($promtUrl) ? $promtUrl : '' }}";
     </script>
