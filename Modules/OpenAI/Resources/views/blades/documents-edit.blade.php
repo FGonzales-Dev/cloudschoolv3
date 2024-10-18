@@ -131,6 +131,7 @@
 
                 </div>
                 <textarea id="basic-example" class="hidden">
+                    <h1> test here </h1>
                 {{ !empty($useCase->content) ? nl2br($useCase->content) : '' }}
             </textarea>
             </div>
