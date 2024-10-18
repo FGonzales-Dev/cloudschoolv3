@@ -1,0 +1,56 @@
+"use strict";
+
+tinymce.init({
+    selector: "textarea#basic-example",
+    statusbar: false,
+    menubar: false,
+    promotion: false,
+    contextmenu: false,
+    content_style: "body{color:#4E4E4EFF}",  // Set text color
+    toolbar: false,
+    plugins: [
+        "advlist",
+        "autolink",
+        "lists",
+        "link",
+        "image",
+        "charmap",
+        "preview",
+        "anchor",
+        "searchreplace",
+        "visualblocks",
+        "code",
+        "fullscreen",
+        "insertdatetime",
+        "media",
+        "table",
+        "markdown"  // Add the markdown plugin
+    ],
+    toolbar: "bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | undo redo | blocks forecolor | removeformat | markdown",
+    content_css: "../../Modules/OpenAI/Resources/assets/css/rtl.min.css",
+
+    init_instance_callback: function (editor) {
+        var lang = document.documentElement.getAttribute("lang");
+
+        function applyTextAlignmentBasedOnLanguage() {
+            if (lang === "ar") {
+                editor.setContent(`<p class="rtl-text">${editor.getContent()}</p>`);
+            } else {
+                editor.setContent(editor.getContent().replace(/<div class="rtl-text">|<\/div>/g, ""));
+            }
+        }
+
+        applyTextAlignmentBasedOnLanguage();
+    },
+    formats: {
+        bold: { inline: 'strong' }
+    },
+
+    convert_fonts_to_spans: true,
+
+    // Markdown configuration
+    markdown: {
+        output: 'html',  // Output format (can be 'html' or 'markdown')
+        extensions: ['strikethrough', 'table', 'tasklist']  // Markdown extensions to support
+    }
+});
