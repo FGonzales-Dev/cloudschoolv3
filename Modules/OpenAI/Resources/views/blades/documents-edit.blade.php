@@ -8,6 +8,7 @@
             class="justify-between subscription-main flex xl:flex-row flex-col xl:h-full subscription-main md:overflow-auto sidebar-scrollbar md:h-screen overflow-x-hidden">
             <div class="w-full pt-[74px] dark:bg-[#292929] xl:overflow-auto sidebar-scrollbar h-screen">
                 <div class="flex justify-between items-center mx-6 mb-4 gap-5">
+                    <h1>test</h1>
                     <div>
                         <div
                             class="flex gap-1.5 leading-[22px] items-center font-medium text-color-2C dark:text-white text-[15px] edit-url">
