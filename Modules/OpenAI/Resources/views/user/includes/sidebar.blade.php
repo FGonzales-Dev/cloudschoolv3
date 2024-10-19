@@ -116,7 +116,7 @@
             <p class="mt-6 cursor-pointer AdavanceOption dark:text-white">{{ __('Advance Options') }}</p>
         @endif
         @if (count($aiProviders))
-            <div id="ProviderOptionDiv" class="hidden">
+            <div id="ProviderOptionDiv">
 
                 @foreach ($aiProviders as $provider => $providerOptions)
                     @if (!empty($providerOptions))
