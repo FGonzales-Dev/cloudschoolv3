@@ -113,7 +113,7 @@
         </div>
 
         @if (count($aiProviders))
-            <p class="mt-6 cursor-pointer AdavanceOption dark:text-white">{{ __('Advance Options') }}</p>
+            <p class="mt-6 cursor-pointer AdavanceOption dark:text-white">Settings</p>
         @endif
         @if (count($aiProviders))
             <div id="ProviderOptionDiv">
